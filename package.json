@@ -1,0 +1,29 @@
+{
+  "name": "datingapp",
+  "version": "1.0.0",
+  "description": "An app to meet and connect local people with the same interest in a specific location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rowin206/DatingApp.git"
+  },
+  "author": "Rowin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rowin206/DatingApp/issues"
+  },
+  "homepage": "https://github.com/Rowin206/DatingApp#readme",
+  "dependencies": {
+    "camelcase": "^5.0.0",
+    "geolocator": "^2.1.5",
+    "moment": "^2.24.0",
+    "parse-full-name": "^1.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

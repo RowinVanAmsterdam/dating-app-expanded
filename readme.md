@@ -21,10 +21,5 @@ Run code:
 npm run start
 ```
 
-## Packages included
-* camelCase
-* moment
-* parse-full-name
-
 ## License
 MIT LICENSE

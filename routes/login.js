@@ -2,16 +2,14 @@ const express = require('express');
 var router = express.Router(); 
 
 
-router.get('/', get)
-router.post('/', add)
-router.put('/', update)
-router.delete('/', remove)
+router.get('/login', get)
+router.post('/login', add)
+router.put('/login', update)
+router.delete('/login', remove)
 
 
 function get(req, res) {
-    res.send({
-        type: 'GET'
-    })
+    res.render('login.ejs')
 }
 
 function add(req, res) {

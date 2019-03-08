@@ -2,13 +2,15 @@ const express = require('express');
 var router = express.Router(); 
 
 
-router.get('/about', aboutGet)
+router.get('/about', get)
 router.post('/about', add)
 router.put('/about', update)
 router.delete('/about', remove)
 
-function aboutGet(req, res) {
-    res.render('about.ejs')
+function get(req, res) {
+    res.send({
+        type: 'GET'
+    });
 }
 
 function add(req, res) {

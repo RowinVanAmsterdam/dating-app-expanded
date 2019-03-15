@@ -1,12 +1,12 @@
 <% include head.ejs %>
-<title>All Users</title>
-<h1>All Users</h1>
+<title>Match Tag - All users</title>
+<h1>Alle gebruikers</h1>
 <% for (var i = 0; i < data.length; i++) { %>
 <h2><a href="/<%= data[i].id %>"><%= data[i].name %></a></h2>
 <p><%= data[i].age %></p>
 <p><%= data[i].description %></p>
 <% } %>
 <p>
-  <a href=/add>Add a user</a>
+  <a href=/add>Gebruiker toevoegen</a>
 </p>
 <% include tail.ejs %>

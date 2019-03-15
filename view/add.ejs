@@ -1,14 +1,14 @@
 <% include head.ejs %>
-<title>Add an user - Dating App</title>
-<h1>Add an new user</h1>
-<form action=/users method=post enctype=multipart/form-data>
-    <label>
-        Profile picture
-        <input name=cover type=file accept=image/*>
-      </label>
-<label>Full Name <input name=name></label>
-<label>Age <input type="number" name=age></label>
-<label>Description <textarea name=description rows="5"></textarea></label>
-<button>Add</button>
-</form>
+<title>Match Tag - Register</title>
+<main class="register">
+  <h1>Maak jouw Tag aan</h1>
+  <form action=/users method=post enctype=multipart/form-data> 
+    <label><input name=cover type=file accept=image/*>Voeg
+      een profielfoto toe</label>
+      <label>Voor- en achternaam <input name=name></label>
+    <label>Leeftijd<input type="number" name=age></label>
+    <label>Schrijf iets over jezelf<textarea name=description rows="5"></textarea></label>
+    <button>Maak Tag aan</button>
+  </form>
+</main>
 <% include tail.ejs %>

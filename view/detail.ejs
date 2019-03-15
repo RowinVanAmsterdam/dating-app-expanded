@@ -1,5 +1,5 @@
 <% include head.ejs %>
-<title><%= data.title %> - My movie website</title>
+<title><%= data.title %> - Match Tag</title>
 <h1><%= data.name %></h1>
 <% if (data.cover) { %>
 <img
@@ -10,10 +10,10 @@
 <p><%= data.description %></p>
 <p>
   <button
-    id=js-remove
+    id=deleteButton
     data-id="<%= data.id %>"
-    class=danger
-  >Remove</button>
+    class=delete
+  >Verwijder gebruiker</button>
 </p>
-<p><a href="/users">Back to list</a></p>
+<p><a href="/users">Ga terug naar alle gebruikers</a></p>
 <% include tail.ejs %>

@@ -1,35 +1,89 @@
 * { box-sizing: border-box }
 
+/*  #region Universal */
 body {
-  font-family: sans-serif;
+  font-family: "Proxima Nova", "Segoe UI", Myriad, Verdana, sans-serif;
   background: black;
   color: white;
   max-width: 36em;
-  margin: 0 auto
+  height: 100vh;
+  margin: 0 auto;
+  border: 1px solid red;
 }
 
-a {
-  color: lime
+/* #endregion */
+
+/* #region Index */
+.index {
+  border: 1px solid green;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.indexLogo {
+  max-width: 80%;
+  max-height: auto;
+}
+
+.signInUpButtons a  {
+  display: flex;
+  justify-content: center;
+
+  color: #ffffff;
+  font-weight: 100;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  border: 1px solid #ffffff;
+  padding: 0.8em 5em;
+  border-radius: 10em;
+
+  margin-top: 1em;
+}
+/* #endregion */ 
+
+/* #region Register */
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
 }
 
 label, input, textarea, button { margin: 1em 0 }
 
-input, textarea, button {
+button {
   font-size: 1em;
   padding: 0.5em;
   border-width: 0;
   border-radius: 0.25em
 }
 
-input, textarea { width: 100% }
+input, textarea {
+  display: flex;
+  justify-content: center;
+  width: 100% ;
 
-img {
-  max-width: 100%;
-  max-height: 15em
+  border-radius: 10em;
 }
 
-.danger {
-  background: red;
-  color: white
+textarea {
+  border-radius: 10em;
 }
+/* #endregion */
 
+/* #region Detail*/
+.delete {
+background: red;
+  color: #ffffff
+}
+/* #endregion */

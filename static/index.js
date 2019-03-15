@@ -1,4 +1,4 @@
-var remove = document.getElementById('js-remove')
+var remove = document.getElementById('deleteButton')
 
 if (remove) {
   remove.addEventListener('click', onremove)
@@ -7,7 +7,6 @@ if (remove) {
 function onremove(ev) {
   var node = ev.target
   var id = node.dataset.id
-  
   var res = new XMLHttpRequest()
 
   res.open('DELETE', '/' + id)
@@ -16,24 +15,8 @@ function onremove(ev) {
 
   function onload() {
     if (res.status !== 200) {
-      throw new Error('Could not delete!')
+      throw new Error('Kan de gebruiker niet verwijderen!')
     }
-    window.location = '/'
-  }
-
-  fetch('/' + id, {method: 'delete'})
-    .then(onresponse)
-    .then(onload, onfail)
-
-  function onresponse(res) {
-    return res.json()
-  }
-
-  function onload() {
     window.location = '/users'
-  }
-
-  function onfail() {
-    throw new Error('Could not delete!')
   }
 }

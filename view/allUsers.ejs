@@ -1,10 +1,10 @@
 <% include head.ejs %>
 <title>All Users</title>
 <h1>All Users</h1>
-<% for (var index = 0; index < data.length; index++) { %>
-<h2><a href="/<%= data[index].id %>"><%= data[index].name %></a></h2>
-<p><%= data[index].age %></p>
-<p><%= data[index].gender %></p>
+<% for (var i = 0; i < data.length; i++) { %>
+<h2><a href="/<%= data[i].id %>"><%= data[i].name %></a></h2>
+<p><%= data[i].age %></p>
+<p><%= data[i].description %></p>
 <% } %>
 <p>
   <a href=/add>Add a user</a>

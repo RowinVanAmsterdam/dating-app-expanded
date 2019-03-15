@@ -9,9 +9,7 @@ router.delete('/', remove)
 
 
 function get(req, res) {
-    res.send({
-        type: 'GET'
-    })
+    res.render('index.ejs')
 }
 
 function add(req, res) {

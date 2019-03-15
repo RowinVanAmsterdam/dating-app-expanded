@@ -1,0 +1,14 @@
+<% include head.ejs %>
+<title>Add an user - Dating App</title>
+<h1>Add an new user</h1>
+<form action=/users method=post enctype=multipart/form-data>
+    <label>
+        Profile picture
+        <input name=cover type=file accept=image/*>
+      </label>
+<label>Full Name <input name=name></label>
+<label>Age <input name=age></label>
+<label>Description <textarea name=description rows="5"></textarea></label>
+<button>Add</button>
+</form>
+<% include tail.ejs %>

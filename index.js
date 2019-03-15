@@ -3,9 +3,9 @@ const express = require('express');
 
 // Require Routes
 var routes = require('./routes');
-var aboutRouter = require('./routes/about')
-var login = require('./routes/login')
-var users = require('./routes/users')
+var aboutRouter = require('./routes/about');
+var login = require('./routes/login');
+var users = require('./routes/users');
 
 // Use Routes
 express()
@@ -23,5 +23,5 @@ express()
 
 
 function notFound(req, res) {
-    res.status(404).render('not-found.ejs')
+    res.status(404).render('not-found.ejs');
 }

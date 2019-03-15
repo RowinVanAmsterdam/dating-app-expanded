@@ -22,16 +22,15 @@ var data = [{
 }
 ];
 
-router.use(bodyParser.urlencoded({
-    extended: true
-}));
-router.use(bodyParser.json());
-router.get("/users", get);
-router.post("/users", upload.single("cover"), add);
-router.put("/users", update);
-router.delete("/:id", remove);
-router.get("/add", form);
-router.get("/:id", user);
+router
+    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.json())
+    .get("/users", get)
+    .post("/users", upload.single("cover"), add)
+    .put("/users", update)
+    .delete("/:id", remove)
+    .get("/add", form)
+    .get("/:id", user);
 
 function user(req, res, next) {
     var id = req.params.id;

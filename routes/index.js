@@ -1,11 +1,11 @@
 const express = require("express");
 var router = express.Router();
 
-
-router.get("/", get);
-router.post("/", add);
-router.put("/", update);
-router.delete("/", remove);
+router
+    .get("/", get)
+    .post("/", add)
+    .put("/", update)
+    .delete("/", remove);
 
 
 function get(req, res) {

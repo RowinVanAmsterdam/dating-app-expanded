@@ -2,7 +2,7 @@
 <title>Match Tag - All users</title>
 <h1>Alle gebruikers</h1>
 <% for (var i = 0; i < data.length; i++) { %>
-<h2><a href="/<%= data[i].id %>"><%= data[i].name %></a></h2>
+<h2><a href="/<%= data[i]._id %>"><%= data[i].name %></a></h2>
 <p><%= data[i].age %></p>
 <p><%= data[i].description %></p>
 <% } %>

@@ -21,10 +21,12 @@
     "array-find": "^1.0.0",
     "body-parser": "^1.18.3",
     "camelcase": "^5.0.0",
+    "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "geolocator": "^2.1.5",
     "moment": "^2.24.0",
+    "mongodb": "^3.1.13",
     "multer": "^1.4.1",
     "parse-full-name": "^1.2.3",
     "slug": "^1.0.0"

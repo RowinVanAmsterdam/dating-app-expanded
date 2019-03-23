@@ -5,12 +5,12 @@ var session = require("express-session");
 // Use Routes
 express()
  
-    .use(require("./routes"))
-    .use(require("./routes/login"))
-    .use(require("./routes/register"))
-    .use(require("./routes/about"))
-    .use(require("./routes/searchLocation"))
-    .use(require("./routes/droppedTags"))
+    .use(require("./route"))
+    .use(require("./route/login"))
+    .use(require("./route/register"))
+    .use(require("./route/about"))
+    .use(require("./route/searchLocation"))
+    .use(require("./route/droppedTags"))
     
 
     .use(session({

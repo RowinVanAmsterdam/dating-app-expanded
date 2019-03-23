@@ -12,8 +12,33 @@ router
         resave: false,
         saveUninitialized: false,
         secret: "ilikedogsmore"
-    }));
+    }))
 
+    // .get("/:id", user);
+
+// function user(req, res, next) {
+//     var id = req.params.id;
+//     db.collection("members").findOne({
+//         _id: id
+//     }, done);
+        
+//     function done(err, data) {
+//         if (err) {
+//             next(err);
+//         } else {
+//             res.render("detail.ejs", {data: data});
+//         }
+
+//         function onverify(match) {
+//             if (match) {
+//                 req.session.user = {username: user.username};
+//                 res.redirect("/");
+//             } else {
+//                 res.status(401).send("Password incorrect");
+//             }
+//         }
+//     }
+// }
 
 function get(req, res) {
     res.render("login.ejs");

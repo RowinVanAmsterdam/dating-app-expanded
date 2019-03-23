@@ -1,0 +1,24 @@
+<% include head.ejs %>
+<title>Match Tag</title>
+<main class="searchLocation">
+    <form action="/action_page.php">
+        <input type="text" placeholder="&#xF002;  Zoek een locatie.." name="search">
+    </form>
+
+    <section class="midSection">
+        <div class="radar-container">
+            <div class="img-container">
+                    <a href="droppedTags">
+                <img src="/static/images/locations/walibiworld2.JPG" alt="Achtbaan in Walibi World">
+                </a>
+            </div>
+            <p>0,5 km</p>
+            <p>1,0 km</p>
+            <p>1,5 km</p>
+        </div>
+    </section>
+
+    <form action=/droppedtags method=post enctype=multipart/form-data> <button>Drop jouw tag</button>
+    </form>
+</main>
+<% include tail.ejs %>

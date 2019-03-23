@@ -1,11 +1,18 @@
 const express = require("express");
-var router = express.Router(); 
+var router = express.Router();
+var session = require("express-session");
 
 router
     .get("/login", get)
     .post("/login", add)
     .put("/login", update)
-    .delete("/login", remove);
+    .delete("/login", remove)
+
+    .use(session({
+        resave: false,
+        saveUninitialized: false,
+        secret: "ilikedogsmore"
+    }));
 
 
 function get(req, res) {

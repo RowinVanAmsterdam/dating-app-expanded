@@ -1,4 +1,8 @@
-* { box-sizing: border-box }
+* {
+  box-sizing: border-box;
+  overflow-y: hidden;
+overflow-x: hidden;
+}
 
 /*  #region Universal */
 body {
@@ -8,19 +12,22 @@ body {
   max-width: 36em;
   height: 100vh;
   margin: 0 auto;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 /* #endregion */
 
 /* #region Index */
 .index {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url("./images/backgrounds/couple1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .indexLogo {
@@ -28,7 +35,7 @@ body {
   max-height: auto;
 }
 
-.signInUpButtons a  {
+/* .signInUpButtons a  {
   display: flex;
   justify-content: center;
 
@@ -41,10 +48,218 @@ body {
   padding: 0.8em 5em;
   border-radius: 10em;
 
-  margin-top: 1em;
-}
-/* #endregion */ 
+  margin-top: 1em; */
 
+/* #endregion */
+
+/* #region login */
+.index {
+  /* border: 1px solid green; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./images/backgrounds/couple1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.indexLogo {
+  max-width: 80%;
+  max-height: auto;
+}
+
+form {
+  width: 20em;
+  height: auto;
+}
+
+.index form input {
+  height: 3.5em;
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-align: center;
+}
+
+form input[type=submit] {
+  border: none;
+  background: linear-gradient(to bottom right, red, #ffffff);
+  text-transform: uppercase;
+}
+
+form a:last-child {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+/* .signInUpButtons a  {
+  display: flex;
+  justify-content: center;
+
+  color: #ffffff;
+  font-weight: 100;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  border: 1px solid #ffffff;
+  padding: 0.8em 5em;
+  border-radius: 10em;
+
+  margin-top: 1em; */
+
+/* #endregion */
+
+/* #region searchLocation */
+.searchLocation {
+  /* border: 1px solid green; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("./images/backgrounds/redgradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.searchLocation form:first-child {
+  width: 90%;
+}
+
+ .searchLocation input[type=text] {
+  font-family: "Proxima Nova", FontAwesome, sans-serif;
+  font-size: 1em;
+  text-align: left;
+  padding: 10px;
+
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.midSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.radar-container {
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-container:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.img-container {
+  overflow: hidden;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  z-index: 1;
+}
+
+.img-container img {
+  width: auto;
+  height: 100%;
+}
+
+.radar-container p {
+  border: 1px solid #ffffff;
+  font-size: 0.8em;
+  padding-left: 8px;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  position: absolute;
+  margin: 0 auto;
+  display: flex;
+  align-items: center; 
+  /* text-align: center; */
+}
+
+.radar-container p:nth-child(3) {
+  width: 75%;
+  height: 75%;
+}
+
+.radar-container p:nth-child(4) {
+  width: 100%;
+  height: 100%;
+}
+
+.searchLocation form:last-child {
+  text-align: center;
+  width: 100%;
+}
+
+.searchLocation form button {
+  width: 80%;
+  border-radius: 25px;
+  margin-bottom: 2em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
+}
+
+/* #endregion */
+/* region allUsers */
+.droppedTags {
+  border: 1px solid green;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url("./images/backgrounds/redgradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.droppedTags ul {
+  border: 1px solid green;
+  width: 90%;
+  height: 40%;
+  overflow: auto;
+  padding-left: 0;
+}
+
+.droppedTags ul li {
+  border: 1px solid white;
+}
+
+.dropTagButton-container {
+  border: 1px solid red;
+  width: 100%;
+  text-align: center;
+}
+
+.dropTagButton-container button {
+  width: 80%;
+  border-radius: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
+}
+/* #endregion */
 /* #region Register */
 
 .register {
@@ -59,7 +274,12 @@ body {
   flex-direction: column;
 }
 
-label, input, textarea, button { margin: 1em 0 }
+label,
+input,
+textarea,
+button {
+  margin: 1em 0
+}
 
 button {
   font-size: 1em;
@@ -68,10 +288,11 @@ button {
   border-radius: 0.25em
 }
 
-input, textarea {
+input,
+textarea {
   display: flex;
   justify-content: center;
-  width: 100% ;
+  width: 100%;
 
   border-radius: 10em;
 }
@@ -79,11 +300,13 @@ input, textarea {
 textarea {
   border-radius: 10em;
 }
+
 /* #endregion */
 
 /* #region Detail*/
 .delete {
-background: red;
+  background: red;
   color: #ffffff
 }
+
 /* #endregion */

@@ -1,6 +1,12 @@
 <% include head.ejs %>
-<title>Inloggen</title>
-<h1>Log in</h1>
-<h2>Gebruikersnaam:</h2>
-<h2>Wachtwoord:</h2>
+<title>Match Tag</title>
+<main class="index">
+    <img class="indexLogo" src="/static/images/logo/logowhite.png" alt="Match Tag logo">
+
+    <form action="searchLocation"> 
+        <label><input type="text" name=username placeholder="E-mailadres"></label>
+        <label><input type="password" name=password placeholder="Wachtwoord"></label>
+        <input type="submit" name="login" value="Inloggen">
+      </form>
+</main>
 <% include tail.ejs %>

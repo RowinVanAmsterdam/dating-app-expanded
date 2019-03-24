@@ -2,16 +2,27 @@ const express = require("express");
 var router = express.Router(); 
 
 router
-    .get("/about", get)
-    .post("/about", add)
-    .put("/about", update)
-    .delete("/about", remove);
+    .get("/logout", logout)
+    .post("/logout", add)
+    .put("/logout", update)
+    .delete("/logout", remove);
 
 function get(req, res) {
     res.send({
         type: "GET"
     });
 }
+
+function logout(req, res, next) {
+    req.session.destroy(function (err) {
+        if (err) {
+            next(err);
+        } else {
+            res.redirect("/");
+        }
+    });
+}
+  
 
 function add(req, res) {
     res.send({

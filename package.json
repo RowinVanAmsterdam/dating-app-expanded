@@ -21,6 +21,7 @@
     "array-find": "^1.0.0",
     "body-parser": "^1.18.3",
     "camelcase": "^5.0.0",
+    "connect-mongo": "^2.0.3",
     "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",

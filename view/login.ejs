@@ -1,12 +1,20 @@
 <% include head.ejs %>
 <title>Match Tag</title>
 <main class="index">
-    <img class="indexLogo" src="/static/images/logo/logowhite.png" alt="Match Tag logo">
-
-    <form action="searchLocation"> 
-        <label><input type="text" name=username placeholder="E-mailadres"></label>
-        <label><input type="password" name=password placeholder="Wachtwoord"></label>
+    <% if (user) { %>
+      <img class="indexLogo" src="/static/images/logo/logowhite.png" alt="Match Tag logo">
+      Hello <%= user.name %>!
+      <a href=/logout>Log out</a>
+    <% } else { %>
+      <img class="indexLogo" src="/static/images/logo/logowhite.png" alt="Match Tag logo">
+    
+    <form action="login" method="POST"> 
+        <label><input type="email" name="email" placeholder="E-mailadres"></label>
+        <label><input type="password" name="password" placeholder="Wachtwoord"></label>
         <input type="submit" name="login" value="Inloggen">
       </form>
+    <% } %>
+  
+    
 </main>
 <% include tail.ejs %>

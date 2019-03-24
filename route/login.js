@@ -1,65 +1,76 @@
 const express = require("express");
-var router = express.Router();
 var session = require("express-session");
+var router = express.Router();
+const bodyParser = require("body-parser");
+var mongo = require("mongodb");
+const MongoStore = require("connect-mongo")(session);
+
+require("dotenv").config();
+
+var db = null;
+var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
+
+mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
+    if (err) throw err;
+    db = client.db("DatingApp");
+});
 
 router
-    .get("/login", get)
-    .post("/login", add)
-    .put("/login", update)
-    .delete("/login", remove)
-
+    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.json())
     .use(session({
         resave: false,
         saveUninitialized: false,
-        secret: "ilikedogsmore"
+        // secret: "ilikedogsmore",
+        secret: process.env.SESSION_SECRET,
+        store: new MongoStore({ url: "mongodb://localhost:27017/DatingApp"})
     }))
+    .get("/login", get)
+    .post("/login", checkUser);
 
-    // .get("/:id", user);
+    
 
-// function user(req, res, next) {
-//     var id = req.params.id;
-//     db.collection("members").findOne({
-//         _id: id
-//     }, done);
-        
-//     function done(err, data) {
-//         if (err) {
-//             next(err);
-//         } else {
-//             res.render("detail.ejs", {data: data});
-//         }
+//https://stackoverflow.com/questions/39759287/mongodb-express-how-to-verify-login-credentials-using-db-collection-findone
 
-//         function onverify(match) {
-//             if (match) {
-//                 req.session.user = {username: user.username};
-//                 res.redirect("/");
-//             } else {
-//                 res.status(401).send("Password incorrect");
-//             }
-//         }
-//     }
-// }
+function checkUser(req, res) {
+    var email = req.body.email;
+    db.collection("members").findOne({
+        email: email
+    }, done);
 
-function get(req, res) {
-    res.render("login.ejs");
+    function done(err, user) {
+        if(err) {
+            console.log("THIS IS ERROR RESPONSE");
+            res.json(err);
+        } 
+        if (user && user.password === req.body.password){
+            console.log("User and password is correct");
+            console.log(user._id);
+            req.session.user = user.name;
+            console.log("next rule");
+            console.log(req.session.user);
+            res.redirect("searchLocation");
+        } else {
+            console.log("Credentials wrong");
+            res.json({err});
+        }         
+    }
 }
 
-function add(req, res) {
-    res.send({
-        type: "POST"
-    });
-}
-
-function update(req, res) {
-    res.send({
-        type: "PUT"
-    });
-}
-
-function remove(req, res) {
-    res.send({
-        type: "DELETE"
-    });
+function get(req, res, data) {
+    if (req.session.user) {
+        res.render("login.ejs", {
+            data: data,
+            user: req.session.user
+        }
+        );
+    } else {
+        res.render("login.ejs",  {
+            data: data,
+            user: req.session.user
+        }
+        );
+    }
 }
 
 module.exports = router;

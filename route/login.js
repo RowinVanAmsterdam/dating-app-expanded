@@ -46,7 +46,7 @@ function checkUser(req, res) {
         if (user && user.password === req.body.password){
             console.log("User and password is correct");
             console.log(user._id);
-            req.session.user = user.name;
+            req.session.user = user;
             console.log("next rule");
             console.log(req.session.user);
             res.redirect("searchLocation");

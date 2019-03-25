@@ -1,19 +1,42 @@
 <% include head.ejs %>
-<title><%= data.title %> - Match Tag</title>
-<h1><%= data.name %></h1>
-<% if (data.cover) { %>
-<img
-  alt
-  src="/upload/<%= data.cover %>"
->
-<% } %>
-<p><%= data.description %></p>
-<p>
-  <button
-    id=deleteButton
-    data-id="<%= data._id %>"
-    class=delete
-  >Verwijder gebruiker</button>
-</p>
-<p><a href="/droppedTags">Ga terug naar alle gebruikers</a></p>
+<title>Match Tag</title>
+<header>
+  <nav class="navBar">
+    <ul>
+      <li class=""><a href="login"></a></li>
+      <li class=""><a href="searchLocation"></a></li>
+    </ul>
+  </nav>
+</header>
+<main class="detail">
+  <section class="userData">
+  <h1>
+    <%= data.name + ", " + data.age%>
+  </h1>
+  <% if (data.cover) { %>
+  <div class="img-container">
+    <img alt src="/upload/<%= data.cover %>">
+  </div>
+  <% } %>
+</section>
+
+  <section class="bio">
+  <p>
+    <%= data.pickupline %>
+  </p>
+  <p>
+    <%= data.description %>
+  </p>
+</section>
+
+  <section class="detailButtons"> 
+    <a href="/droppedTags"><button class="backBtn">Terug</button></a>
+
+    <% if (user.name === data.name) { %>
+      <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder gebruiker</button>
+    <% } else { %>
+      <a href="#"><button class="delete">Stuur een bericht</button></a>
+    <% } %>
+  </section>
+</main>
 <% include tail.ejs %>

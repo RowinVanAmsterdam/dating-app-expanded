@@ -1,8 +1,16 @@
 <% include head.ejs %>
 <title>Match Tag</title>
+<header>
+        <nav class="navBar">
+                <ul>
+                    <li class=""><a href="login"></a></li>
+                    <li class="active"><a href="searchLocation"></a></li>
+                </ul>
+            </nav>
+</header>
 <main class="searchLocation">
-    <form action="/action_page.php">
-        <input type="text" placeholder="&#xF002;  Zoek een locatie.." name="search">
+    <form action="#">
+        <input id="searchField" type="text" placeholder="&#xF002;  Zoek een locatie.." name="search">
     </form>
 
 
@@ -19,7 +27,8 @@
         </div>
     </section>
 
-    <form action=/droppedtags method=post enctype=multipart/form-data> <button>Drop jouw tag</button>
-    </form>
+    <div class="dropTagButton-container">
+            <a href=/add><button>Drop jouw tag</button></a> 
+          </div>
 </main>
 <% include tail.ejs %>

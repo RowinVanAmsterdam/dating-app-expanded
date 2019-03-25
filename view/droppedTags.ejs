@@ -1,20 +1,49 @@
 <% include head.ejs %>
 <title>Match Tag</title>
+<header>
+  <nav class="navBar">
+    <ul>
+      <li class=""><a href="login"></a></li>
+      <li class=""><a href="searchLocation"></a></li>
+    </ul>
+  </nav>
+</header>
 <main class="droppedTags">
   <h1>Walibi World</h1>
   <div class="img-container">
     <img src="/static/images/locations/walibiworld2.JPG" alt="Achtbaan in Walibi World">
   </div>
 
-  <ul>
-  <% for (var i = 0; i < data.length; i++) { %>
-  <li><h2><a href="/<%= data[i]._id %>">
-      <%= data[i].name + ", " + data[i].age%></a></h2></li>
-  <% } %>
-</ul>
+  <section class="droppedTagList">
+    <h2>Gedropte tags op deze locatie:</h2>
+    <ul>
+      <% for (var i = 0; i < data.length; i++) { %>
+      <li>
+        <p><a href="/<%= data[i]._id %>">
+            <%= data[i].name + ", " + data[i].age%></a></p>
+      </li>
+      <% } %>
+    </ul>
+  </section>
 
-<div class="dropTagButton-container">
-    <a href=/add><button>Drop jouw tag</button></a> 
+
+  <% var found = false; %>
+<% for (var i = 0; i < data.length; i++) { %>
+ <%   if (user.name === data[i].name) { %>
+     <%   found = true; %>
+    <%    break; %>
+  <%  } %>
+<% } %>
+<% if (found) { %>
+  <div class="dropTagButton-container">
+      <a href="/<%= data[i]._id %>">
+  <button>Verwijder jouw tag</button></a>
   </div>
+ <% }else{ %>
+  <div class="dropTagButton-container">
+      <a href="add">
+  <button>Drop jouw tag</button></a>
+  </div>
+ <% } %>
 </main>
 <% include tail.ejs %>

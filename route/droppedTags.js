@@ -28,6 +28,7 @@ router
     .get("/add", form)
     .get("/:id", user)
     .delete("/:id", remove);
+
     
 function user(req, res, next) {
     var id = req.params.id;
@@ -38,11 +39,16 @@ function user(req, res, next) {
     function done(err, data) {
         if (err) {
             next(err);
-        } else {
-            res.render("detail.ejs", {data: data});
+            
+        } 
+        else {
+            res.render("detail.ejs", {data: data,
+                user: req.session.user});
         }
     }
 }
+
+
 
 function get(req, res, next) {
     db.collection("pretparken").find().toArray(done);
@@ -51,7 +57,8 @@ function get(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.render("droppedTags.ejs", {data: data});
+            res.render("droppedTags.ejs", {data: data,
+                user: req.session.user});
         }
     }
 }
@@ -62,6 +69,7 @@ function add(req, res, next) {
         name: req.body.name,
         cover: req.file ? req.file.filename : null,
         age: req.body.age,
+        pickupline: req.body.pickupline,
         description: req.body.description
     }, done);
     

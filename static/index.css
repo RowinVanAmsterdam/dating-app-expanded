@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   overflow-y: hidden;
-overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 /*  #region Universal */
@@ -13,6 +13,53 @@ body {
   height: 100vh;
   margin: 0 auto;
   /* border: 1px solid red; */
+}
+
+/* Nav */
+
+.navBar {
+  height: auto;
+}
+
+.navBar ul {
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0 auto;
+  height: 2em;
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+}
+
+.navBar ul li {
+  width: 50%;
+  text-align: center;
+}
+
+/* <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> */
+/* <div>Icons made by <a href="https://www.flaticon.com/authors/egor-rumyantsev" title="Egor Rumyantsev">Egor Rumyantsev</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> */
+.navBar li:nth-of-type(1) a {
+  background-image: url(/static/images/icons/user.svg);
+  background-repeat: no-repeat;
+  background-size: 1.5em;
+  background-position: center;
+  display: block;
+  height: 100%;
+}
+.navBar li.active:nth-of-type(1) a {
+  border-bottom: 3px solid palegreen;
+}
+.navBar li:nth-of-type(2) a {
+  background-image: url(/static/images/icons/search.svg);
+  background-repeat: no-repeat;
+  background-size: 1.5em;
+  background-position: center;
+  display: block;
+  height: 100%;
+}
+.navBar li.active:nth-of-type(2) a {
+  border-bottom: 3px solid palegreen;
 }
 
 /* #endregion */
@@ -117,10 +164,11 @@ form a:last-child {
 /* #region searchLocation */
 .searchLocation {
   /* border: 1px solid green; */
-  height: 100vh;
+  height: calc(100vh - 2em);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   background-image: url("./images/backgrounds/redgradient.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -130,7 +178,7 @@ form a:last-child {
   width: 90%;
 }
 
- .searchLocation input[type=text] {
+.searchLocation input[type=text] {
   font-family: "Proxima Nova", FontAwesome, sans-serif;
   font-size: 1em;
   text-align: left;
@@ -138,20 +186,18 @@ form a:last-child {
 
   background: #ffffff;
   border: 1px solid #ffffff;
-  color: #ffffff;
 }
 
 .midSection {
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  
+  width: 90%;
 }
 
 .radar-container {
-  width:100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,7 +235,7 @@ form a:last-child {
   position: absolute;
   margin: 0 auto;
   display: flex;
-  align-items: center; 
+  align-items: center;
   /* text-align: center; */
 }
 
@@ -211,7 +257,6 @@ form a:last-child {
 .searchLocation form button {
   width: 80%;
   border-radius: 25px;
-  margin-bottom: 2em;
   text-transform: uppercase;
   color: #ffffff;
   background: rgba(0, 0, 0, 0);
@@ -219,10 +264,11 @@ form a:last-child {
 }
 
 /* #endregion */
-/* region allUsers */
+
+/* #region allUsers */
 .droppedTags {
-  border: 1px solid green;
-  height: 100vh;
+  /* border: 1px solid green; */
+  height: calc(100vh - 2em);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -231,17 +277,85 @@ form a:last-child {
   background-repeat: no-repeat;
   background-size: cover;
 }
+/* <a href="#" class="x"></a> */
+/* .x {
+  border: 1px solid purple;
+  display: block;
+  position: relative;
+  right: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  transition: transform .25s ease-in-out;
+}
 
-.droppedTags ul {
-  border: 1px solid green;
+.x:hover::before,
+.x:hover::after {
+  border: 1px solid rgba(255,255,255,1);
+}
+.x:before {
+  content: "";
+  display: block;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  height: 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+.x:after {
+  content: "";
+  display: block;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  height: 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  transform: rotate(-45deg);
+  transform-origin: center;
+} */
+
+
+.droppedTags h1 {
+  margin-bottom: 0;
+}
+
+.droppedTagList {
   width: 90%;
   height: 40%;
   overflow: auto;
+}
+
+.droppedTagList h2 {
+  margin: 0;
+  font-size: 1em;
+}
+
+.droppedTagList ul {
   padding-left: 0;
 }
 
-.droppedTags ul li {
-  border: 1px solid white;
+.droppedTagList ul li {
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  width: 100%;
+  margin-top: 1px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.droppedTagList ul li a {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .dropTagButton-container {
@@ -259,7 +373,9 @@ form a:last-child {
   background: rgba(0, 0, 0, 0);
   border: 1px solid #ffffff;
 }
+
 /* #endregion */
+
 /* #region Register */
 
 .register {
@@ -304,6 +420,36 @@ textarea {
 /* #endregion */
 
 /* #region Detail*/
+.detail {
+  height: calc(100vh - 2em);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url("./images/backgrounds/redgradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bio {
+  border: 1px solid blue;
+  width: 90%;
+}
+
+.detailButtons {
+  border: 1px solid yellow;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.backBtn, 
+.delete {
+  background-color: blue;
+}
+
+
 .delete {
   background: red;
   color: #ffffff

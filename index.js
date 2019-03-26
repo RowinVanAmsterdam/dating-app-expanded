@@ -5,8 +5,10 @@ const express = require("express");
 express()
  
     .use(require("./route"))
+    .use(require("./route/credsrequired"))
     .use(require("./route/login"))
     .use(require("./route/register"))
+    .use(require("./route/personalTag"))
     .use(require("./route/logout"))
     .use(require("./route/searchLocation"))
     .use(require("./route/droppedTags"))

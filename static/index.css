@@ -23,7 +23,7 @@ body {
 
 .navBar ul {
   width: 100%;
-  background: #ffffff;
+  background: #8B1728;
   display: flex;
   justify-content: center;
   padding: 0;
@@ -37,29 +37,73 @@ body {
   text-align: center;
 }
 
-/* <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> */
-/* <div>Icons made by <a href="https://www.flaticon.com/authors/egor-rumyantsev" title="Egor Rumyantsev">Egor Rumyantsev</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> */
-.navBar li:nth-of-type(1) a {
-  background-image: url(/static/images/icons/user.svg);
+.navBar li a {
   background-repeat: no-repeat;
-  background-size: 1.5em;
   background-position: center;
+  background-size: 2.5em;
   display: block;
   height: 100%;
+  opacity: .6;
 }
-.navBar li.active:nth-of-type(1) a {
-  border-bottom: 3px solid palegreen;
+
+.navBar li a:hover {
+  opacity: 1;
+  /* background-color: #3E040D; */
+}
+
+.navBar li:nth-of-type(1) a {
+  background-image: url(/static/images/icons/account1.png);
 }
 .navBar li:nth-of-type(2) a {
-  background-image: url(/static/images/icons/search.svg);
-  background-repeat: no-repeat;
-  background-size: 1.5em;
-  background-position: center;
-  display: block;
-  height: 100%;
+  background-image: url(/static/images/icons/search1.png);
 }
-.navBar li.active:nth-of-type(2) a {
-  border-bottom: 3px solid palegreen;
+.navBar li:nth-of-type(3) a {
+  background-image: url(/static/images/icons/tag1.png);
+}
+
+ .navBar li.active:nth-of-type(1) a {
+  background-image: url(/static/images/icons/account2.png);
+  opacity: 1;
+} 
+ .navBar li.active:nth-of-type(2) a {
+  background-image: url(/static/images/icons/search2.png);
+  opacity: 1;
+} 
+.navBar li.active:nth-of-type(3) a {
+  background-image: url(/static/images/icons/tag2.png);
+  opacity: 1;
+}
+
+/* labels/buttons */
+label,
+input,
+textarea,
+button {
+  margin: 1em 0
+}
+
+button {
+  font-size: 1em;
+  padding: 0.5em;
+  border-width: 0;
+  border-radius: 0.25em
+}
+
+input,
+textarea {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-left: 10px;
+  border-radius: 10em;
+}
+
+textarea {
+  height: 3.5em;
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  border-radius: 50px;
 }
 
 /* #endregion */
@@ -82,9 +126,10 @@ body {
   max-height: auto;
 }
 
-/* .signInUpButtons a  {
+.index a:not(:last-child)  {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   color: #ffffff;
   font-weight: 100;
@@ -92,33 +137,24 @@ body {
   text-transform: uppercase;
 
   border: 1px solid #ffffff;
-  padding: 0.8em 5em;
   border-radius: 10em;
+  margin-top: 1em;
+  width: 80%;
+  height: 2.5em;
+}
 
-  margin-top: 1em; */
-
+.index a:last-child {
+  margin-top: 1em;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.8em;
+}
 /* #endregion */
 
 /* #region login */
-.index {
-  /* border: 1px solid green; */
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url("./images/backgrounds/couple1.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.indexLogo {
-  max-width: 80%;
-  max-height: auto;
-}
-
+/* User not logged in */
 form {
-  width: 20em;
+  width: 80%;
   height: auto;
 }
 
@@ -144,9 +180,22 @@ form a:last-child {
   color: #ffffff;
 }
 
-/* .signInUpButtons a  {
+/* user logged in */
+.login {
+  height: calc(100vh - 2em);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./images/backgrounds/redgradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login a {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   color: #ffffff;
   font-weight: 100;
@@ -154,10 +203,13 @@ form a:last-child {
   text-transform: uppercase;
 
   border: 1px solid #ffffff;
-  padding: 0.8em 5em;
   border-radius: 10em;
+  margin-top: 8em;
+  width: 80%;
+  height: 2.5em;
+}
 
-  margin-top: 1em; */
+
 
 /* #endregion */
 
@@ -183,7 +235,6 @@ form a:last-child {
   font-size: 1em;
   text-align: left;
   padding: 10px;
-
   background: #ffffff;
   border: 1px solid #ffffff;
 }
@@ -265,7 +316,7 @@ form a:last-child {
 
 /* #endregion */
 
-/* #region allUsers */
+/* #region droppedTags */
 .droppedTags {
   /* border: 1px solid green; */
   height: calc(100vh - 2em);
@@ -379,10 +430,40 @@ form a:last-child {
 /* #region Register */
 
 .register {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  background-image: url("./images/backgrounds/redgradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ .register h1,
+.register label {
+  margin-bottom: 0;
+}
+
+.register label {
+  margin-top: 0;
+} 
+
+.register label:not(:first-child) input {
+  height: 3.5em;
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.register label:not(:nth-last-child(-n+3)) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.register label input {
+  width: 60%;
 }
 
 .register form {
@@ -390,33 +471,65 @@ form a:last-child {
   flex-direction: column;
 }
 
-label,
-input,
-textarea,
-button {
-  margin: 1em 0
+.bottomBtns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-button {
-  font-size: 1em;
-  padding: 0.5em;
-  border-width: 0;
-  border-radius: 0.25em
-}
-
-input,
-textarea {
+.bottomBtns a,
+.bottomBtns button {
+  background: rgba(0, 0, 0, 0);
+  width: 9em;
+  height: 3em;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* #endregion */
+
+/* #region Add */
+.add {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url("./images/backgrounds/redgradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.add label:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
   width: 100%;
-
-  border-radius: 10em;
 }
 
-textarea {
-  border-radius: 10em;
+.add input[type="file"] {
+  width: 70%;
 }
 
+.add label:not(:first-child) input {
+  height: 3.5em;
+  background: rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.add form {
+  display: flex;
+  flex-direction: column;
+}
 /* #endregion */
 
 /* #region Detail*/
@@ -431,28 +544,71 @@ textarea {
   background-size: cover;
 }
 
+.detail h1 {
+  margin-bottom: 0;
+}
+
 .bio {
-  border: 1px solid blue;
-  width: 90%;
+  text-align: center;
+  width: 60%;
+}
+
+.bio h2 {
+  font-size: 1em;
 }
 
 .detailButtons {
-  border: 1px solid yellow;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .backBtn, 
 .delete {
-  background-color: blue;
+  background: rgba(0, 0, 0, 0);
+  width: 10em;
+  height: 3em;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
 }
 
 
-.delete {
+/* .delete {
   background: red;
   color: #ffffff
+} */
+
+/* #endregion */
+
+/* #region PersonalTag  */
+.personalTag {
+  height: calc(100vh - 2em);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: url("./images/backgrounds/redgradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* #endregion */
+
+/* #region credsRequired  */
+.credsRequired {
+  height: calc(100vh - 2em);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: url("./images/backgrounds/redgradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+.credsRequired h1 {
+  width: 80%;
+  text-align: center;
+}
 /* #endregion */

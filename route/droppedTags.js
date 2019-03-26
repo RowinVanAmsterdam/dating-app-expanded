@@ -9,7 +9,9 @@ require("dotenv").config();
 var db = null;
 var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
 
-mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
+mongo.MongoClient.connect(url, {
+    useNewUrlParser: true
+}, function (err, client) {
     if (err) throw err;
     db = client.db("DatingApp");
 });
@@ -20,30 +22,32 @@ var upload = multer({
 
 router
     .use(express.static("static"))
-    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.urlencoded({
+        extended: true
+    }))
     .use(bodyParser.json())
     .get("/droppedTags", get)
     .post("/droppedTags", upload.single("cover"), add)
-    .put("/droppedTags", update)
     .get("/add", form)
-    .get("/:id", user)
+    .get("/:id", finduser)
     .delete("/:id", remove);
 
-    
-function user(req, res, next) {
+
+function finduser(req, res, next) {
     var id = req.params.id;
     db.collection("pretparken").findOne({
         _id: mongo.ObjectID(id)
     }, done);
-    
+
     function done(err, data) {
         if (err) {
             next(err);
-            
-        } 
-        else {
-            res.render("detail.ejs", {data: data,
-                user: req.session.user});
+
+        } else {
+            res.render("detail.ejs", {
+                data: data,
+                user: req.session.user
+            });
         }
     }
 }
@@ -51,18 +55,27 @@ function user(req, res, next) {
 
 
 function get(req, res, next) {
-    db.collection("pretparken").find().toArray(done);
-  
-    function done(err, data) {
-        if (err) {
-            next(err);
-        } else {
-            res.render("droppedTags.ejs", {data: data,
-                user: req.session.user});
-        }
+    if (req.session.user) {
+        db.collection("pretparken").find().toArray(done);
+
+        function done(err, data) {
+            if (err) {
+                next(err);
+            } else {
+                res.render("droppedTags.ejs", {
+                    data: data,
+                    user: req.session.user
+                });
+            }
+        }} else {
+        res.status(404).render("credsrequired.ejs");
     }
 }
-  
+// if (req.session.user) {
+//     res.render("searchLocation.ejs");
+// } else {
+//     res.status(401).send("Credentials required");
+// }
 
 function add(req, res, next) {
     db.collection("pretparken").insertOne({
@@ -72,7 +85,7 @@ function add(req, res, next) {
         pickupline: req.body.pickupline,
         description: req.body.description
     }, done);
-    
+
     function done(err, data) {
         if (err) {
             next(err);
@@ -82,29 +95,45 @@ function add(req, res, next) {
     }
 }
 
-function update(req, res) {
-    res.send({
-        type: "PUT"
-    });
-}
-
 function remove(req, res, next) {
     var id = req.params.id;
     db.collection("pretparken").deleteOne({
         _id: mongo.ObjectID(id)
     }, done);
-    
+
     function done(err) {
         if (err) {
             next(err);
         } else {
-            res.json({status: "ok"});
+            res.json({
+                status: "ok"
+            });
         }
     }
 }
 
-function form(req, res) {
-    res.render("add.ejs");
+
+
+function form(req, res, next) {
+    if (req.session.user) {
+        var user = req.session.user;
+        db.collection("members").findOne(user, done);
+
+        function done(err, data) {
+            if (err) {
+                next(err);
+
+            } else {
+                res.render("add.ejs", {
+                    data: data,
+                    user: req.session.user
+                });
+            }
+        }
+    } else {
+        res.status(401).render("credsrequired.ejs");
+    }
 }
+
 
 module.exports = router;

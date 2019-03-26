@@ -9,11 +9,7 @@ router
 
 
 function get(req, res) {
-    if (req.session.user) {
-        res.render("searchLocation.ejs");
-    } else {
-        res.status(401).send("Credentials required");
-    }
+    res.render("searchLocation.ejs");
 }
 
 function add(req, res) {

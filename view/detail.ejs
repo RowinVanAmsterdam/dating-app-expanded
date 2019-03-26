@@ -5,11 +5,11 @@
     <ul>
       <li class=""><a href="login"></a></li>
       <li class=""><a href="searchLocation"></a></li>
+      <li class=""><a href="personalTag"></a></li>
     </ul>
   </nav>
 </header>
 <main class="detail">
-  <section class="userData">
   <h1>
     <%= data.name + ", " + data.age%>
   </h1>
@@ -18,12 +18,11 @@
     <img alt src="/upload/<%= data.cover %>">
   </div>
   <% } %>
-</section>
 
   <section class="bio">
-  <p>
+  <h2>
     <%= data.pickupline %>
-  </p>
+  </h2>
   <p>
     <%= data.description %>
   </p>
@@ -33,7 +32,7 @@
     <a href="/droppedTags"><button class="backBtn">Terug</button></a>
 
     <% if (user.name === data.name) { %>
-      <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder gebruiker</button>
+      <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
     <% } else { %>
       <a href="#"><button class="delete">Stuur een bericht</button></a>
     <% } %>

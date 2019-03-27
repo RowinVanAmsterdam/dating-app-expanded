@@ -1,13 +1,13 @@
-var remove = document.getElementById("deleteButton");
+const remove = document.getElementById("deleteButton");
 
 if (remove) {
     remove.addEventListener("click", onremove);
 }
 
 function onremove(ev) {
-    var node = ev.target;
-    var id = node.dataset.id;
-    var res = new XMLHttpRequest();
+    let node = ev.target;
+    let id = node.dataset.id;
+    let res = new XMLHttpRequest();
 
     res.open("DELETE", "/" + id);
     res.onload = onload;
@@ -15,7 +15,7 @@ function onremove(ev) {
 
     function onload() {
         if (res.status !== 200) {
-            throw new Error("Kan de gebruiker niet verwijderen!");
+            throw new Error("Kan de tag niet verwijderen!");
         }
         window.location = "/droppedTags";
     }

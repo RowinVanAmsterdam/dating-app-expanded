@@ -29,12 +29,12 @@
 </section>
 
   <section class="detailButtons"> 
-    <a href="/droppedTags"><button class="backBtn">Terug</button></a>
+    <a href="/droppedTags" class="backBtn">Terug</a>
 
     <% if (user.name === data.name) { %>
       <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
     <% } else { %>
-      <a href="#"><button class="delete">Stuur een bericht</button></a>
+      <a href="#" class="delete">Stuur bericht</a>
     <% } %>
   </section>
 </main>

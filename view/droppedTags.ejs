@@ -19,9 +19,9 @@
     <h2>Gedropte tags op deze locatie:</h2>
     <ul>
       <% for (var i = 0; i < data.length; i++) { %>
-      <li>
-        <p><a href="/<%= data[i]._id %>">
-            <%= data[i].name + ", " + data[i].age%></a></p>
+      <li tabindex="0">
+        <a  href="/<%= data[i]._id %>"><p>
+            <%= data[i].name + ", " + data[i].age%></p></a>
       </li>
       <% } %>
     </ul>
@@ -36,15 +36,10 @@
   <%  } %>
 <% } %>
 <% if (found) { %>
-  <div class="dropTagButton-container">
-      <a href="/<%= data[i]._id %>">
-  <button>Verwijder jouw tag</button></a>
-  </div>
+      <a class="dropTagBtn" href="/<%= data[i]._id %>">Verwijder jouw tag</a>
  <% }else{ %>
-  <div class="dropTagButton-container">
-      <a href="add">
-  <button>Drop jouw tag</button></a>
-  </div>
+      <a class="dropTagBtn" href="add">
+  Drop jouw tag</a>
  <% } %>
 </main>
 <% include tail.ejs %>

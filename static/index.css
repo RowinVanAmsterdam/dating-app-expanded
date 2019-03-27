@@ -46,8 +46,10 @@ body {
   opacity: .6;
 }
 
-.navBar li a:hover {
+.navBar li a:hover,
+.navBar li a:focus {
   opacity: 1;
+  outline: none;
   /* background-color: #3E040D; */
 }
 
@@ -101,9 +103,121 @@ textarea {
 textarea {
   height: 3.5em;
   background: rgba(0, 0, 0, 0);
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255, 255, 255, .6);
   color: #ffffff;
   border-radius: 50px;
+  padding-top: 10px;
+}
+
+/* #endregion */
+
+/* #region states */
+/* ------- Index ------- */
+.index a:not(:last-child):hover,
+.index a:not(:last-child):focus {
+  background-color: rgba(255,255,255,.4);
+  transition: 0.3s;
+  outline: none;
+}
+
+.index a:last-child:hover,
+.index a:last-child:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+
+/* ------- logIn ------- */
+
+.index form input:hover,
+.index form input:focus {
+  border: 1px solid rgba(255, 255, 255, 1);
+  transition: 0.3s;
+  outline: none;
+  cursor: pointer;
+}
+
+.login a:hover,
+.login a:focus {
+  background-color: rgba(255,255,255,.4);
+  transition: 0.3s;
+  outline: none;
+}
+
+/* ------- Register ------- */
+.register input[type="file"]:focus {
+  outline: none;
+}
+
+.register label:not(:first-child) input:hover,
+.register label:not(:first-child) input:focus,
+textarea:hover,
+textarea:focus {
+  border: 1px solid rgba(255, 255, 255, 1);
+  transition: 0.3s;
+  outline: none;
+}
+
+.bottomBtns a:hover,
+.bottomBtns a:focus,
+.bottomBtns button:hover,
+.bottomBtns button:focus {
+  background-color: rgba(255,255,255,.4);
+  transition: 0.3s;
+  outline: none;
+}
+
+/* ------- searchLocation ------- */
+.searchLocation input[type=text]:focus {
+  outline: none;
+}
+
+.searchLocation .img-container:hover {
+  opacity: .6;
+}
+
+.dropTagBtn:hover,
+.dropTagBtn:focus {
+  background: rgba(255,255,255,.4);
+  transition: 0.3s;
+  outline: none;
+}
+
+.dropTagBtn:focus {
+  outline: none;
+}
+
+/* ------- droppedTags ------- */
+.droppedTagList ul li:hover,
+.droppedTagList ul li:focus {
+  background: rgba(255,255,255,.4);
+  transition: 0.3s;
+  outline: none;
+}
+
+.droppedTagList ul li a:focus {
+  outline: none;
+}
+
+/* ------- Detail ------- */
+.backBtn:hover,
+.backBtn:focus, 
+.delete:hover,
+.delete:focus {
+  background: rgba(255,255,255,.4);
+  transition: 0.3s;
+  outline: none;
+}
+/* ------- Add ------- */
+.add label:not(:first-child) input:hover,
+.add label:not(:first-child) input:focus {
+  border: 1px solid rgba(255, 255, 255, 1);
+  transition: 0.3s;
+  outline: none;
+}
+
+.add input[type="file"]:focus {
+  outline: none;
 }
 
 /* #endregion */
@@ -149,6 +263,7 @@ textarea {
   text-decoration: none;
   font-size: 0.8em;
 }
+
 /* #endregion */
 
 /* #region login */
@@ -161,7 +276,7 @@ form {
 .index form input {
   height: 3.5em;
   background: rgba(0, 0, 0, 0);
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255, 255, 255, .6);
   color: #ffffff;
   text-align: center;
 }
@@ -209,8 +324,6 @@ form a:last-child {
   height: 2.5em;
 }
 
-
-
 /* #endregion */
 
 /* #region searchLocation */
@@ -234,6 +347,7 @@ form a:last-child {
   font-family: "Proxima Nova", FontAwesome, sans-serif;
   font-size: 1em;
   text-align: left;
+  margin-bottom: 0;
   padding: 10px;
   background: #ffffff;
   border: 1px solid #ffffff;
@@ -293,11 +407,13 @@ form a:last-child {
 .radar-container p:nth-child(3) {
   width: 75%;
   height: 75%;
+  opacity: .7;
 }
 
 .radar-container p:nth-child(4) {
   width: 100%;
   height: 100%;
+  opacity: .5;
 }
 
 .searchLocation form:last-child {
@@ -305,14 +421,6 @@ form a:last-child {
   width: 100%;
 }
 
-.searchLocation form button {
-  width: 80%;
-  border-radius: 25px;
-  text-transform: uppercase;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0);
-  border: 1px solid #ffffff;
-}
 
 /* #endregion */
 
@@ -328,53 +436,6 @@ form a:last-child {
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* <a href="#" class="x"></a> */
-/* .x {
-  border: 1px solid purple;
-  display: block;
-  position: relative;
-  right: 0;
-  top: 0;
-  width: 32px;
-  height: 32px;
-  transition: transform .25s ease-in-out;
-}
-
-.x:hover::before,
-.x:hover::after {
-  border: 1px solid rgba(255,255,255,1);
-}
-.x:before {
-  content: "";
-  display: block;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  height: 0;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  transform: rotate(45deg);
-  transform-origin: center;
-}
-.x:after {
-  content: "";
-  display: block;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  height: 0;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  transform: rotate(-45deg);
-  transform-origin: center;
-} */
-
 
 .droppedTags h1 {
   margin-bottom: 0;
@@ -409,20 +470,21 @@ form a:last-child {
   text-decoration: none;
 }
 
-.dropTagButton-container {
-  border: 1px solid red;
-  width: 100%;
-  text-align: center;
-}
+.dropTagBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.dropTagButton-container button {
-  width: 80%;
-  border-radius: 25px;
-  text-align: center;
-  text-transform: uppercase;
   color: #ffffff;
-  background: rgba(0, 0, 0, 0);
+  font-weight: 100;
+  text-decoration: none;
+  text-transform: uppercase;
+
   border: 1px solid #ffffff;
+  border-radius: 10em;
+  margin-bottom: 1em;
+  width: 80%;
+  height: 2.5em;
 }
 
 /* #endregion */
@@ -440,10 +502,10 @@ form a:last-child {
   background-size: cover;
 }
 
- .register h1,
+ /* .register h1,
 .register label {
   margin-bottom: 0;
-}
+} */
 
 .register label {
   margin-top: 0;
@@ -452,7 +514,7 @@ form a:last-child {
 .register label:not(:first-child) input {
   height: 3.5em;
   background: rgba(0, 0, 0, 0);
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255, 255, 255, .6);
   color: #ffffff;
 }
 
@@ -522,7 +584,7 @@ form a:last-child {
 .add label:not(:first-child) input {
   height: 3.5em;
   background: rgba(0, 0, 0, 0);
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255, 255, 255, .6);
   color: #ffffff;
 }
 
@@ -567,18 +629,20 @@ form a:last-child {
 .backBtn, 
 .delete {
   background: rgba(0, 0, 0, 0);
-  width: 10em;
+  width: 9em;
   height: 3em;
   color: #ffffff;
   border: 1px solid #ffffff;
   border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 1em 0;
+  cursor: pointer;
 }
-
-
-/* .delete {
-  background: red;
-  color: #ffffff
-} */
 
 /* #endregion */
 

@@ -7,9 +7,10 @@ var mongo = require("mongodb");
 require("dotenv").config();
 
 var db = null;
-var url = process.env.MONGODB_URI;
+var url = "mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbname}";
+// process.env.MONGODB_URI
 
-mongo.MongoClient.connect("mongodb+srv://Rowin:rowin@datingapp-bhe3v.azure.mongodb.net/datingapp", {
+mongo.MongoClient.connect(url, {
     useNewUrlParser: true
 }, function (err, client) {
     if (err) throw err;

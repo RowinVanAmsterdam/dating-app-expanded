@@ -3,7 +3,6 @@ var session = require("express-session");
 var router = express.Router();
 const bodyParser = require("body-parser");
 var mongo = require("mongodb");
-const MongoStore = require("connect-mongo")(session);
 
 require("dotenv").config();
 
@@ -22,8 +21,7 @@ router
     .use(session({
         resave: false,
         saveUninitialized: false,
-        secret: process.env.SESSION_SECRET,
-        store: new MongoStore({ url: "mongodb://localhost:27017/DatingApp"})
+        secret: process.env.SESSION_SECRET
     }))
     .get("/login", get)
     .post("/login", checkUser);

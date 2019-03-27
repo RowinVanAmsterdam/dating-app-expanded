@@ -1,13 +1,13 @@
 const express = require("express");
-var router = express.Router();
+const router = express.Router();
 const bodyParser = require("body-parser");
-var multer = require("multer");
-var mongo = require("mongodb");
+const multer = require("multer");
+const mongo = require("mongodb");
 
 require("dotenv").config();
 
-var db = null;
-var url = process.env.MONGODB_URI;
+let db = null;
+let url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {
     useNewUrlParser: true
@@ -28,11 +28,9 @@ router
     .get("/register", add)
     .post("/register", upload.single("cover"), add);
 
-
 function get(req, res) {
     res.render("register.ejs");
 }
-
 
 function add(req, res, next) {
     db.collection("members").insertOne({
@@ -44,8 +42,6 @@ function add(req, res, next) {
         pickupline: req.body.pickupline,
         description: req.body.description
     }, done);
-
-
 
     function done(err) {
         if (err) {

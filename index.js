@@ -13,8 +13,6 @@ express()
     .use(require("./route/searchLocation"))
     .use(require("./route/droppedTags"))
 
-   
-
     .use(express.static("static"))
     .use("/static/images/", express.static("./static/images"))
     .set("view engine", "ejs")

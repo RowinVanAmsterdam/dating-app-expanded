@@ -8,7 +8,7 @@ const MongoStore = require("connect-mongo")(session);
 require("dotenv").config();
 
 var db = null;
-var url = process.env.DB_HOST;
+var url = process.env.MONGODB_URI;
 
 
 mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
@@ -22,7 +22,6 @@ router
     .use(session({
         resave: false,
         saveUninitialized: false,
-        // secret: "ilikedogsmore",
         secret: process.env.SESSION_SECRET,
         store: new MongoStore({ url: "mongodb://localhost:27017/DatingApp"})
     }))

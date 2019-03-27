@@ -7,7 +7,7 @@ var mongo = require("mongodb");
 require("dotenv").config();
 
 var db = null;
-var url = process.env.DB_HOST;
+var url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {
     useNewUrlParser: true
@@ -25,7 +25,6 @@ router
     .use(bodyParser.urlencoded({
         extended: true
     }))
-    .use(bodyParser.json())
     .get("/droppedTags", get)
     .post("/droppedTags", upload.single("cover"), add)
     .get("/add", form)
@@ -52,8 +51,6 @@ function finduser(req, res, next) {
     }
 }
 
-
-
 function get(req, res, next) {
     if (req.session.user) {
         db.collection("pretparken").find().toArray(done);
@@ -71,11 +68,6 @@ function get(req, res, next) {
         res.status(404).render("credsrequired.ejs");
     }
 }
-// if (req.session.user) {
-//     res.render("searchLocation.ejs");
-// } else {
-//     res.status(401).send("Credentials required");
-// }
 
 function add(req, res, next) {
     db.collection("pretparken").insertOne({
@@ -112,8 +104,6 @@ function remove(req, res, next) {
     }
 }
 
-
-
 function form(req, res, next) {
     if (req.session.user) {
         var user = req.session.user;
@@ -134,6 +124,5 @@ function form(req, res, next) {
         res.status(401).render("credsrequired.ejs");
     }
 }
-
 
 module.exports = router;

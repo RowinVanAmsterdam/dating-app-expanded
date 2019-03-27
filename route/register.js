@@ -7,7 +7,7 @@ var mongo = require("mongodb");
 require("dotenv").config();
 
 var db = null;
-var url = process.env.DB_HOST;
+var url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {
     useNewUrlParser: true

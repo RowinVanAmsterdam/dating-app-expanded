@@ -1,27 +1,13 @@
 const express = require("express");
-var router = express.Router();
+const router = express.Router();
 const bodyParser = require("body-parser");
-var multer = require("multer");
-var mongo = require("mongodb");
+const multer = require("multer");
+const mongo = require("mongodb");
 
 require("dotenv").config();
 
-// const dbuser = process.env.DB_USER;
-// const dbpassword = process.env.DB_PASSWORD;
-// const dbcluster = process.env.DB_CLUSTER;
-// const dbhost = process.env.HOST;
-// const dbname = process.env.DB_NAME;
-
-// const dbuser = "Rowin";
-// const dbpassword = "rowin";
-// const dbcluster = "datingapp";
-// const dbhost = "bhe3v.azure.mongodb.net";
-// const dbname = "DatingApp";
-
-var db = null;
-var url = process.env.MONGODB_URI;
-// `mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbname}`
-// process.env.MONGODB_URI
+let db = null;
+let url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {
     useNewUrlParser: true
@@ -30,7 +16,7 @@ mongo.MongoClient.connect(url, {
     db = client.db("DatingApp");
 });
 
-var upload = multer({
+const upload = multer({
     dest: "static/upload/"
 });
 
@@ -47,7 +33,7 @@ router
 
 
 function finduser(req, res, next) {
-    var id = req.params.id;
+    let id = req.params.id;
     db.collection("pretparken").findOne({
         _id: mongo.ObjectID(id)
     }, done);
@@ -102,7 +88,7 @@ function add(req, res, next) {
 }
 
 function remove(req, res, next) {
-    var id = req.params.id;
+    let id = req.params.id;
     db.collection("pretparken").deleteOne({
         _id: mongo.ObjectID(id)
     }, done);
@@ -120,7 +106,7 @@ function remove(req, res, next) {
 
 function form(req, res, next) {
     if (req.session.user) {
-        var user = req.session.user;
+        let user = req.session.user;
         db.collection("members").findOne(user, done);
 
         function done(err, data) {

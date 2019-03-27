@@ -6,8 +6,14 @@ var mongo = require("mongodb");
 
 require("dotenv").config();
 
+const dbuser = process.env.DB_USER;
+const dbpassword = process.env.DB_PASSWORD;
+const dbcluster = process.env.DB_CLUSTER;
+const dbhost = process.env.HOST;
+const dbname = process.env.DB_NAME;
+
 var db = null;
-var url = "mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbname}";
+var url = `mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbname}`;
 // process.env.MONGODB_URI
 
 mongo.MongoClient.connect(url, {

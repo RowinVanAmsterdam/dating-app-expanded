@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 var mongo = require("mongodb");
 const MongoStore = require("connect-mongo")(session);
 
-require("dotenv").config({path: "/.env"});
+require("dotenv").config();
 
 var db = null;
 var url = process.env.MONGODB_URI;

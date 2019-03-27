@@ -9,7 +9,7 @@ require("dotenv").config();
 var db = null;
 var url = process.env.MONGODB_URI;
 
-mongo.MongoClient.connect(url, {
+mongo.MongoClient.connect("mongodb+srv://Rowin:rowin@datingapp-bhe3v.azure.mongodb.net/test?retryWrites=true", {
     useNewUrlParser: true
 }, function (err, client) {
     if (err) throw err;

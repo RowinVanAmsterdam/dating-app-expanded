@@ -1,7 +1,7 @@
-// bron: https://github.com/cmda-bt/be-course-18-19/tree/master/examples/express-server
 const express = require("express");
+
 require("dotenv").config();
-// Use Routes
+
 express()
  
     .use(require("./route"))

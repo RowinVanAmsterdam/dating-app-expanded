@@ -1,14 +1,13 @@
 const express = require("express");
-var session = require("express-session");
-var router = express.Router();
+const session = require("express-session");
+const router = express.Router();
 const bodyParser = require("body-parser");
-var mongo = require("mongodb");
+const mongo = require("mongodb");
 
 require("dotenv").config();
 
-var db = null;
-var url = process.env.MONGODB_URI;
-
+let db = null;
+let url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
     if (err) throw err;
@@ -26,30 +25,17 @@ router
     .get("/login", get)
     .post("/login", checkUser);
 
-    
-
-//https://stackoverflow.com/questions/39759287/mongodb-express-how-to-verify-login-credentials-using-db-collection-findone
-
 function checkUser(req, res) {
-    var email = req.body.email;
+    let email = req.body.email;
     db.collection("members").findOne({
         email: email
     }, done);
 
     function done(err, user) {
-        if(err) {
-            console.log("THIS IS ERROR RESPONSE");
-            res.json(err);
-        } 
         if (user && user.password === req.body.password){
-            console.log("User and password is correct");
-            console.log(user._id);
             req.session.user = user;
-            console.log("next rule");
-            console.log(req.session.user);
             res.redirect("searchLocation");
         } else {
-            console.log("Credentials wrong");
             res.json({err});
         }         
     }

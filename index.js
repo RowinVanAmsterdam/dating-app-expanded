@@ -12,7 +12,6 @@ express()
     .use(require("./route/logout"))
     .use(require("./route/searchLocation"))
     .use(require("./route/droppedTags"))
-    .use(require(".env").config())
     
 
    

@@ -21,7 +21,7 @@ express()
     .set("view engine", "ejs")
     .set("views", "view")
     .use(notFound)
-    .listen(process.env.PORT || "8000");
+    .listen(27017 || 8000);
 
 function notFound(req, res) {
     res.status(404).render("not-found.ejs");

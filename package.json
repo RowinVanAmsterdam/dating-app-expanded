@@ -34,7 +34,6 @@
     "slug": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.15.2",
-    "nodemon": "^1.18.10"
+    "eslint": "^5.15.2"
   }
 }

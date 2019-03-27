@@ -1,13 +1,13 @@
 const express = require("express");
-var router = express.Router();
+const router = express.Router();
 const bodyParser = require("body-parser");
-var multer = require("multer");
-var mongo = require("mongodb");
+const multer = require("multer");
+const mongo = require("mongodb");
 
 require("dotenv").config();
 
-var db = null;
-var url = process.env.MONGODB_URI;
+let db = null;
+let url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {
     useNewUrlParser: true
@@ -25,30 +25,11 @@ router
     .use(bodyParser.urlencoded({extended: true}))
     .use(bodyParser.json())
     .post("/register", upload.single("cover"), get)
-
     .get("/personalTag", get);
-
-// function get(req, res, next) {
-
-//     var user = req.session.user;
-//     db.collection("pretparken").findOne(user, done);
-
-//     function done(err, data) {
-//         if (err) {
-//             next(err);
-
-//         } else {
-//             res.render("personalTag.ejs", {
-//                 data: data,
-//                 user: req.session.user
-//             });
-//         }
-//     }
-// }
 
 function get(req, res, next) {
     if (req.session.user) {
-        var user = req.session.user;
+        let user = req.session.user;
         db.collection("pretparken").findOne(user, done);
 
         function done(err, data) {

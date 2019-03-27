@@ -1,7 +1,5 @@
 {
 "builds": [
-    { "src": "*.php", "use": "@now/php" },
-    { "src": "*.html", "use": "@now/static" },
     { "src": "*.js", "use": "@now/node" }
   ]
 }

@@ -5,17 +5,13 @@ const bodyParser = require("body-parser");
 var mongo = require("mongodb");
 const MongoStore = require("connect-mongo")(session);
 
-require("dotenv").config();
+require("dotenv").config({path: "/.env"});
 
 var db = null;
 var url = process.env.MONGODB_URI;
 
 
-mongo.MongoClient.connect(url, 
-     {
-      user:'Rowin',
-      password:'rowin'
-    }, {useNewUrlParser: true }, function (err, client) {
+mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
     if (err) throw err;
     db = client.db("DatingApp");
 });

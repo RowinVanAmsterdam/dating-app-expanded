@@ -8,7 +8,7 @@ An app to meet and connect local people with the same interest in a specific loc
 ![Match Tag, location search page](https://66.media.tumblr.com/f0488a6ee76ce3701dcb86f35847867a/tumblr_pp2nmiWeWV1xh4pqfo2_1280.png)
 ![Match Tag, location page](https://66.media.tumblr.com/82776c5496ba57c24e28501929b1253a/tumblr_pp2nmiWeWV1xh4pqfo1_1280.png)
 
-<img src="https://66.media.tumblr.com/0950b228bd2028eded17f5e344181293/tumblr_pp2nmiWeWV1xh4pqfo3_1280.png" width="400" height="800"> <img src="hhttps://66.media.tumblr.com/f0488a6ee76ce3701dcb86f35847867a/tumblr_pp2nmiWeWV1xh4pqfo2_1280.png" width="400" height="800"> <img src="https://66.media.tumblr.com/82776c5496ba57c24e28501929b1253a/tumblr_pp2nmiWeWV1xh4pqfo1_1280.png" width="400" height="800">
+<img src="https://66.media.tumblr.com/0950b228bd2028eded17f5e344181293/tumblr_pp2nmiWeWV1xh4pqfo3_1280.png" width="300" height="600"> <img src="hhttps://66.media.tumblr.com/f0488a6ee76ce3701dcb86f35847867a/tumblr_pp2nmiWeWV1xh4pqfo2_1280.png" width="300" height="600"> <img src="https://66.media.tumblr.com/82776c5496ba57c24e28501929b1253a/tumblr_pp2nmiWeWV1xh4pqfo1_1280.png" width="300" height="600">
 
 ## Installation
 Clone repo: 

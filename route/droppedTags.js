@@ -13,7 +13,7 @@ mongo.MongoClient.connect(url, {
     useNewUrlParser: true
 }, function (err, client) {
     if (err) throw err;
-    db = client.db("DatingApp");
+    db = client.db("MatchTag");
 });
 
 const upload = multer({
@@ -34,7 +34,7 @@ router
 
 function finduser(req, res, next) {
     let id = req.params.id;
-    db.collection("pretparken").findOne({
+    db.collection("reddeadredemption2").findOne({
         _id: mongo.ObjectID(id)
     }, done);
 
@@ -53,7 +53,7 @@ function finduser(req, res, next) {
 
 function get(req, res, next) {
     if (req.session.user) {
-        db.collection("pretparken").find().toArray(done);
+        db.collection("reddeadredemption2").find().toArray(done);
 
         function done(err, data) {
             if (err) {
@@ -70,7 +70,7 @@ function get(req, res, next) {
 }
 
 function add(req, res, next) {
-    db.collection("pretparken").insertOne({
+    db.collection("reddeadredemption2").insertOne({
         name: req.body.name,
         cover: req.file ? req.file.filename : null,
         age: req.body.age,
@@ -89,7 +89,7 @@ function add(req, res, next) {
 
 function remove(req, res, next) {
     let id = req.params.id;
-    db.collection("pretparken").deleteOne({
+    db.collection("reddeadredemption2").deleteOne({
         _id: mongo.ObjectID(id)
     }, done);
 

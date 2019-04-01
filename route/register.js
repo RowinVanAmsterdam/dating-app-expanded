@@ -13,7 +13,7 @@ mongo.MongoClient.connect(url, {
     useNewUrlParser: true
 }, function (err, client) {
     if (err) throw err;
-    db = client.db("DatingApp");
+    db = client.db("MatchTag");
 });
 
 var upload = multer({

@@ -11,7 +11,7 @@ let url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
     if (err) throw err;
-    db = client.db("DatingApp");
+    db = client.db("MatchTag");
 });
 
 router

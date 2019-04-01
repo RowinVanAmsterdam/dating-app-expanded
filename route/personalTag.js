@@ -13,7 +13,7 @@ mongo.MongoClient.connect(url, {
     useNewUrlParser: true
 }, function (err, client) {
     if (err) throw err;
-    db = client.db("DatingApp");
+    db = client.db("MatchTag");
 });
 
 var upload = multer({
@@ -30,7 +30,7 @@ router
 function get(req, res, next) {
     if (req.session.user) {
         let user = req.session.user;
-        db.collection("reddeadredemption2").findOne(user, done);
+        db.collection("red_dead_redemption_2").findOne(user, done);
 
         function done(err, data) {
             if (err) {

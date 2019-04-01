@@ -30,7 +30,7 @@ router
 function get(req, res, next) {
     if (req.session.user) {
         let user = req.session.user;
-        db.collection("pretparken").findOne(user, done);
+        db.collection("reddeadredemption2").findOne(user, done);
 
         function done(err, data) {
             if (err) {

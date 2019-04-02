@@ -1,27 +1,27 @@
 <% include head.ejs %>
 <title>Match Tag</title>
 <header>
-  <nav class="navBar">
+  <nav class='navBar'>
     <ul>
-      <li class=""><a href="login"></a></li>
-      <li class=""><a href="searchLocation"></a></li>
-      <li class=""><a href="personalTag"></a></li>
+      <li class=''><a href='login'></a></li>
+      <li class=''><a href='searchLocation'></a></li>
+      <li class=''><a href='personalTag'></a></li>
     </ul>
   </nav>
 </header>
-<main class="droppedTags">
+<main class='droppedTags'>
   <h1>Red Dead Redemption 2</h1>
-  <div class="img-container">
-    <img src="/static/images/games/rdr2.jpg" alt="Red Dead Redemption 2 cover image">
+  <div class='img-container'>
+    <img src='/static/images/games/rdr2.jpg' alt='Red Dead Redemption 2 cover image'>
   </div>
 
-  <section class="droppedTagList">
+  <section class='droppedTagList'>
     <h2>Gedropte gamertags:</h2>
     <ul>
       <% for (var i = 0; i < data.length; i++) { %>
-      <li tabindex="0">
-        <a  href="/<%= data[i]._id %>"><p>
-            <%= data[i].name + ", " + data[i].age%></p></a>
+      <li tabindex='0'>
+        <a  href='/<%= data[i]._id %>'><p>
+            <%= data[i].name + ', ' + data[i].age%></p></a>
       </li>
       <% } %>
     </ul>
@@ -36,9 +36,9 @@
   <%  } %>
 <% } %>
 <% if (found) { %>
-      <a class="dropTagBtn" href="/<%= data[i]._id %>">Verwijder jouw tag</a>
+      <a class='dropTagBtn' href='/<%= data[i]._id %>'>Verwijder jouw tag</a>
  <% }else{ %>
-      <a class="dropTagBtn" href="add">
+      <a class='dropTagBtn' href='add'>
   Drop jouw tag</a>
  <% } %>
 </main>

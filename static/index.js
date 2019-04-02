@@ -1,7 +1,7 @@
-const remove = document.getElementById("deleteButton");
+const remove = document.getElementById('deleteButton');
 
 if (remove) {
-    remove.addEventListener("click", onremove);
+    remove.addEventListener('click', onremove);
 }
 
 function onremove(ev) {
@@ -9,14 +9,14 @@ function onremove(ev) {
     let id = node.dataset.id;
     let res = new XMLHttpRequest();
 
-    res.open("DELETE", "/" + id);
+    res.open('DELETE', '/' + id);
     res.onload = onload;
     res.send();
 
     function onload() {
         if (res.status !== 200) {
-            throw new Error("Kan de tag niet verwijderen!");
+            throw new Error('Kan de tag niet verwijderen!');
         }
-        window.location = "/droppedTags";
+        window.location = '/droppedTags';
     }
 }

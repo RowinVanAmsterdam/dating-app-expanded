@@ -422,7 +422,7 @@ form a:last-child {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: url("./images/backgrounds/redgradient.png");
+  background-image: url('./images/backgrounds/redgradient.png');
   background-repeat: no-repeat;
   background-size: cover;
 }

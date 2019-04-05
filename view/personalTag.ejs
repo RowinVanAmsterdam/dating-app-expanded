@@ -26,6 +26,17 @@
   <p>
     <%= user.description %>
   </p>
+
+  <section class="droppedTagList">
+    <h2>Tags:</h2>
+    <ul>
+      <li tabindex="0">
+        <a  href="/<%= data._id %>"><p>
+            <%= data.name + ", " + data.age%></p></a>
+      </li>
+    </ul>
+  </section>
+
 </section>
 </main>
 <% include tail.ejs %>

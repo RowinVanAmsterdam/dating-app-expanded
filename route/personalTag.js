@@ -25,7 +25,8 @@ router
     .use(bodyParser.urlencoded({extended: true}))
     .use(bodyParser.json())
     .post("/register", upload.single("cover"), get)
-    .get("/personalTag", get);
+    .get("/personalTag", get)
+    .get('/:id', findTag);
 
 function get(req, res, next) {
     if (req.session.user) {
@@ -46,5 +47,43 @@ function get(req, res, next) {
         res.status(401).render("credsrequired.ejs");
     }
 }
+
+function findTag(req, res, next) {
+    let id = req.params.id;
+    db.collection("red_dead_redemption_2").findOne({
+        _id: mongo.ObjectID(id)
+    }, done);
+
+    function done(err, data) {
+        if (err) {
+            next(err);
+
+        } else {
+            res.render("detail.ejs", {
+                data: data,
+                user: req.session.user
+            });
+        }
+    }
+}
+
+// function showTag(req, res) {
+//     // Query that was made to find the profile with _id: 1
+//     db.collection('red_dead_redemption_2').findOne({
+//         _id: 1,
+//         // Runs the done function after the query
+//     }, done);
+//     function done(err, data) {
+//         if (err) {
+//             next(err);
+//         }
+//         else {
+//             // Giving data through with the res.render
+//             res.render('profile/profile.pug', {data: data});
+//         }
+//     }
+// }
+
+
 
 module.exports = router;

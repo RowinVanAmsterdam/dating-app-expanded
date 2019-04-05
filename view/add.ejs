@@ -3,7 +3,7 @@
 <main class='add'>
   <h1>Drop jouw Tag</h1>
   <form action=/droppedTags method=post enctype=multipart/form-data> 
-    <label>Upload profielfoto<input name=cover type=file accept=image/* value="<%= user.cover %>"></label>
+    <label>Upload profielfoto<input name=cover type=file accept=image/* value='<%= user.cover %>'></label>
       <label>Naam<input name=name value='<%= user.name %>'></label>
     <label>Leeftijd<input type='number' name=age value='<%= user.age %>'></label>
     <label>Openingszin<textarea name=pickupline rows='1' value='<%= user.pickupline %>'></textarea></label>

@@ -10,35 +10,19 @@
   </nav>
 </header>
 <main class="droppedTags">
-<h1>hooooi</h1>
-<p>
-        hihi<%= data[1].name%></p>
+    <h1><%= collTitle%></h1>
+        <section class="droppedTagList">
+                <h2>Gedropte gamertags:</h2>
+                <ul>
+                  <% for (var i = 0; i < data.length; i++) { %>
+                  <li tabindex="0">
+                    <a  href="/<%= collTitle%>/<%= data[i]._id %>"><p>
+                        <%= data[i].name + ", " + data[i].age%></p></a>
+                  </li>
+                  <% } %>
+                </ul>
+              </section>
 
-
-        <!-- <p>
-              <%= data[1].name%></p>
-        
-              <% var found = false; %>
-              <% for (var i = 0; i < data.length; i++) { %>
-                <p>
-                        <%= data[i].name%></p>
-               <% } %> -->
-
-  <!-- <div class="img-container">
-    <img src="/static/images/games/rdr2.jpg" alt="Red Dead Redemption 2 cover image">
-  </div> -->
-
-  <!-- <section class="droppedTagList">
-    <h2>Gedropte gamertags:</h2>
-    <ul>
-      <% for (var i = 0; i < data.length; i++) { %>
-      <li tabindex="0">
-        <a  href="/<%= data[i]._id %>"><p>
-            <%= data[i].name + ", " + data[i].age%></p></a>
-      </li>
-      <% } %>
-    </ul>
-  </section> -->
 
 </main>
 <% include tail.ejs %>

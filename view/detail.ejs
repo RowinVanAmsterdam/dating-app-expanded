@@ -29,8 +29,8 @@
 </section>
 
   <section class="detailButtons"> 
-    <a href="/droppedTags" class="backBtn">Terug</a>
-
+    <a href="javascript:history.back()" class="backBtn">Terug</a>
+<h1><%= collTitle %></h1>
     <% if (user.name === data.name) { %>
       <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
     <% } else { %>

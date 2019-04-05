@@ -27,8 +27,9 @@ router
     }))
 
     .get("/searchLocation", get)
-    .get("/red_dead_redemption_2", finduser)
-    .get("/:id", finduser);
+    // .get("/red_dead_redemption_2", finduser)
+    .get("/:id", finduser)
+    .get("/:id/:id", detailUser);
 
 function get(req, res, next) {
     db.listCollections().toArray(done);
@@ -41,32 +42,33 @@ function get(req, res, next) {
                 data: data,
                 user: req.session.user
             });
-            console.log(data)
+            console.log(data);
         }
     }
 }
 
+// let id = req.params.id;
+// db.collection("red_dead_redemption_2").findOne({
+//     _id: mongo.ObjectID(id)
+// }, done);
+
 function finduser(req, res, next) {
-
-    console.log("test of dit wordt uitgevoerd.")
-    // let id = req.params.id;
-    // db.collection("red_dead_redemption_2").findOne({
-    //     _id: mongo.ObjectID(id)
-    // }, done);
-
-
+    console.log("test of dit wordt uitgevoerd.");
+    console.log(req.params.id);
+    db.collection(req.params.id).find().toArray(done);
     // db.listCollections().toArray(done);
-    db.collection("red_dead_redemption_2").find().toArray(done);
+    // db.collection("red_dead_redemption_2").find().toArray(done);
     function done(err, data) {
+        
         if (err) {
             next(err);
 
         } else {
             res.render("collPage.ejs", {
                 data: data,
+                collTitle: req.params.id,
                 user: req.session.user
             });
-            console.log(data.name)
         }
     }
 }
@@ -74,5 +76,25 @@ function finduser(req, res, next) {
 // function get(req, res) {
 //     res.render("searchLocation.ejs");
 // }
+
+function detailUser(req, res, next) {
+    let id = req.params.id;
+    db.collection("red_dead_redemption_2").findOne({
+        _id: mongo.ObjectID(id)
+    }, done);
+
+    function done(err, data) {
+        if (err) {
+            next(err);
+
+        } else {
+            res.render("detail.ejs", {
+                data: data,
+                collTitle: req.params.id,
+                user: req.session.user
+            });
+        }
+    }
+}
 
 module.exports = router;

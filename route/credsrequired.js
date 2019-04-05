@@ -1,12 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 router
-    .get("/credsrequired", get);
+    .get('/credsrequired', get);
 
 
 function get(req, res) {
-    res.render("credsrequired.ejs");
+    res.render('credsrequired.ejs');
 }
 
 module.exports = router;

@@ -1,25 +1,25 @@
 <% include head.ejs %>
 <title>Match Tag</title>
 <header>
-  <nav class="navBar">
+  <nav class='navBar'>
     <ul>
-      <li class=""><a href="login"></a></li>
-      <li class=""><a href="searchLocation"></a></li>
-      <li class=""><a href="personalTag"></a></li>
+      <li class=''><a href='login'></a></li>
+      <li class=''><a href='searchLocation'></a></li>
+      <li class=''><a href='personalTag'></a></li>
     </ul>
   </nav>
 </header>
-<main class="detail">
+<main class='detail'>
   <h1>
-    <%= data.name + ", " + data.age%>
+    <%= data.name + ', ' + data.age%>
   </h1>
   <% if (data.cover) { %>
-  <div class="img-container">
-    <img alt src="/upload/<%= data.cover %>">
+  <div class='img-container'>
+    <img alt src='/upload/<%= data.cover %>'>
   </div>
   <% } %>
 
-  <section class="bio">
+  <section class='bio'>
   <h2>
     <%= data.pickupline %>
   </h2>
@@ -28,13 +28,13 @@
   </p>
 </section>
 
-  <section class="detailButtons"> 
-    <a href="/droppedTags" class="backBtn">Terug</a>
+  <section class='detailButtons'> 
+    <a href='/droppedTags' class='backBtn'>Terug</a>
 
     <% if (user.name === data.name) { %>
-      <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
+      <button id=deleteButton data-id='<%= data._id %>' class=delete>Verwijder Tag</button>
     <% } else { %>
-      <a href="#" class="delete">Stuur bericht</a>
+      <a href='#' class='delete'>Stuur bericht</a>
     <% } %>
   </section>
 </main>

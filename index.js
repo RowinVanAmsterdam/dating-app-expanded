@@ -16,9 +16,9 @@ express()
 
     .use(express.static('static'))
     .use('/static/images/', express.static('./static/images'))
+    .use(notFound)
     .set('view engine', 'ejs')
     .set('views', 'view')
-    .use(notFound)
     .listen(process.env.PORT || 8000);
 
 

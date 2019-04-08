@@ -32,7 +32,9 @@
     <a href="javascript:history.back()" class="backBtn">Terug</a>
 <h1><%= collTitle %></h1>
     <% if (user.name === data.name) { %>
+      <form action="/delete/<%= collTitle %>/<%= userId %>" method='POST'>
       <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
+    </form>
     <% } else { %>
       <a href="#" class="delete">Stuur bericht</a>
     <% } %>

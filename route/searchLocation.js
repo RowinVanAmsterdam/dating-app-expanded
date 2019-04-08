@@ -27,11 +27,13 @@ router
     }))
 
     .get("/searchLocation", get)
+    
     .post("/:id", upload.single("cover"), add)
     .get("/:id/add", form)
     .get("/:id", finduser)
     .get("/:id/:userId", detailUser)
-    .delete("/:userId", remove);
+    .post("/delete/:id/:userId", remove);
+    
 
 function get(req, res, next) {
     db.listCollections().toArray(done);
@@ -81,6 +83,7 @@ function detailUser(req, res, next) {
             res.render("detail.ejs", {
                 data: data,
                 collTitle: req.params.id,
+                userId: req.params.userId,
                 user: req.session.user
             });
         }
@@ -131,22 +134,42 @@ function form(req, res, next) {
 }
 
 function remove(req, res, next) {
+    console.log("check if it runs");
     console.log(req.params.id);
     console.log(req.params.userId);
     let userId = req.params.userId;
-    db.collection("red_dead_redemption_2").deleteOne({
-        _id: mongo.ObjectID(userId)
+    db.collection(req.params.id).deleteOne({
+        _id: mongo.ObjectID(req.params.userId)
     }, done);
 
     function done(err) {
         if (err) {
             next(err);
+            console.log("error");
         } else {
-            res.json({
-                status: "ok"
-            });
+            res.redirect("/");
+            console.log("no no no error");
         }
     }
 }
+
+// function remove(req, res, next) {
+//     console.log(req.params.id);
+//     console.log(req.params.userId);
+//     let userId = req.params.userId;
+//     db.collection(req.params.id).deleteOne({
+//         _id: userId
+//     }, done);
+
+//     function done(err) {
+//         if (err) {
+//             next(err);
+//         } else {
+//             res.json({
+//                 status: "ok"
+//             });
+//         }
+//     }
+// }
 
 module.exports = router;

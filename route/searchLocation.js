@@ -134,10 +134,6 @@ function form(req, res, next) {
 }
 
 function remove(req, res, next) {
-    console.log("check if it runs");
-    console.log(req.params.id);
-    console.log(req.params.userId);
-    let userId = req.params.userId;
     db.collection(req.params.id).deleteOne({
         _id: mongo.ObjectID(req.params.userId)
     }, done);

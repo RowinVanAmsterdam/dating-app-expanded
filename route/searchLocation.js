@@ -27,9 +27,11 @@ router
     }))
 
     .get("/searchLocation", get)
-    // .get("/red_dead_redemption_2", finduser)
+    .post("/:id", upload.single("cover"), add)
+    .get("/:id/add", form)
     .get("/:id", finduser)
-    .get("/:id/:id", detailUser);
+    .get("/:id/:userId", detailUser)
+    .delete("/:userId", remove);
 
 function get(req, res, next) {
     db.listCollections().toArray(done);
@@ -42,22 +44,12 @@ function get(req, res, next) {
                 data: data,
                 user: req.session.user
             });
-            console.log(data);
         }
     }
 }
 
-// let id = req.params.id;
-// db.collection("red_dead_redemption_2").findOne({
-//     _id: mongo.ObjectID(id)
-// }, done);
-
 function finduser(req, res, next) {
-    console.log("test of dit wordt uitgevoerd.");
-    console.log(req.params.id);
     db.collection(req.params.id).find().toArray(done);
-    // db.listCollections().toArray(done);
-    // db.collection("red_dead_redemption_2").find().toArray(done);
     function done(err, data) {
         
         if (err) {
@@ -73,13 +65,11 @@ function finduser(req, res, next) {
     }
 }
 
-// function get(req, res) {
-//     res.render("searchLocation.ejs");
-// }
-
 function detailUser(req, res, next) {
-    let id = req.params.id;
-    db.collection("red_dead_redemption_2").findOne({
+    // console.log(req.params.id);
+    // console.log(req.params.userId);
+    let id = req.params.userId;
+    db.collection(req.params.id).findOne({
         _id: mongo.ObjectID(id)
     }, done);
 
@@ -92,6 +82,68 @@ function detailUser(req, res, next) {
                 data: data,
                 collTitle: req.params.id,
                 user: req.session.user
+            });
+        }
+    }
+}
+
+function add(req, res, next) {
+    // console.log(req.params.id);
+    db.collection(req.params.id).insertOne({
+        name: req.body.name,
+        cover: req.file ? req.file.filename : null,
+        age: req.body.age,
+        pickupline: req.body.pickupline,
+        description: req.body.description
+    }, done);
+
+    function done(err, data) {
+        if (err) {
+            next(err);
+        } else {
+            res.redirect("/" + req.params.id + "/" + data.insertedId);
+        }
+    }
+}
+
+function form(req, res, next) {
+    // console.log("function form" + req.params.id);
+    if (req.session.user) {
+        
+        let user = req.session.user;
+        db.collection("members").findOne(user, done);
+
+        function done(err, data) {
+            if (err) {
+                next(err);
+
+            } else {
+                res.render("add.ejs", {
+                    data: data,
+                    collTitle: req.params.id,
+                    user: req.session.user
+                });
+            }
+        }
+    } else {
+        res.status(401).render("credsrequired.ejs");
+    }
+}
+
+function remove(req, res, next) {
+    console.log(req.params.id);
+    console.log(req.params.userId);
+    let userId = req.params.userId;
+    db.collection("red_dead_redemption_2").deleteOne({
+        _id: mongo.ObjectID(userId)
+    }, done);
+
+    function done(err) {
+        if (err) {
+            next(err);
+        } else {
+            res.json({
+                status: "ok"
             });
         }
     }

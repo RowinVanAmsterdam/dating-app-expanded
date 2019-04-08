@@ -22,7 +22,19 @@
                   <% } %>
                 </ul>
               </section>
-
+              <% var found = false; %>
+              <% for (var i = 0; i < data.length; i++) { %>
+               <%   if (user.name === data[i].name) { %>
+                   <%   found = true; %>
+                  <%    break; %>
+                <%  } %>
+              <% } %>
+              <% if (found) { %>
+                    <a class="dropTagBtn" href="/<%= data[i]._id %>">Verwijder jouw tag</a>
+               <% }else{ %>
+                    <a class="dropTagBtn" href="/<%= collTitle%>/add">
+                Drop jouw tag</a>
+               <% } %>
 
 </main>
 <% include tail.ejs %>

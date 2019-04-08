@@ -145,10 +145,8 @@ function remove(req, res, next) {
     function done(err) {
         if (err) {
             next(err);
-            console.log("error");
         } else {
-            res.redirect("/");
-            console.log("no no no error");
+            res.redirect("/" + req.params.id);
         }
     }
 }

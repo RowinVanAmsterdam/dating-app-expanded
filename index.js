@@ -1,27 +1,27 @@
-const express = require("express");
+const express = require('express');
 
-require("dotenv").config();
+require('dotenv').config();
 
 express()
 
-    .use(require("./route"))
-    .use(require("./route/credsrequired"))
-    .use(require("./route/login"))
-    .use(require("./route/register"))
-    .use(require("./route/personalTag"))
-    .use(require("./route/logout"))
-    .use(require("./route/searchLocation"))
-    .use(require("./route/droppedTags"))
+    .use(require('./route'))
+    .use(require('./route/credsrequired'))
+    .use(require('./route/login'))
+    .use(require('./route/register'))
+    .use(require('./route/personalTag'))
+    .use(require('./route/logout'))
+    .use(require('./route/searchLocation'))
+    .use(require('./route/droppedTags'))
 
 
-    .use(express.static("static"))
-    .use("/static/images/", express.static("./static/images"))
+    .use(express.static('static'))
+    .use('/static/images/', express.static('./static/images'))
     .use(notFound)
-    .set("view engine", "ejs")
-    .set("views", "view")
-    .listen(process.env.PORT || 8000);
+    .set('view engine', 'ejs')
+    .set('views', 'view')
+    .listen(3000);
 
 
 function notFound(req, res) {
-    res.status(404).render("not-found.ejs");
+    res.status(404).render('not-found.ejs');
 }

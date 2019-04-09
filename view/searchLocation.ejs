@@ -1,25 +1,25 @@
 <% include head.ejs %>
 <title>Match Tag</title>
 <header>
-        <nav class="navBar">
+        <nav class='navBar'>
                 <ul>
-                    <li class=""><a href="login"></a></li>
-                    <li class="active"><a href="searchLocation"></a></li>
-                    <li class=""><a href="personalTag"></a></li>
+                    <li class=''><a href='login'></a></li>
+                    <li class='active'><a href='searchLocation'></a></li>
+                    <li class=''><a href='personalTag'></a></li>
                 </ul>
             </nav>
 </header>
-<main class="searchLocation">
-    <form action="#">
-        <input id="searchField" type="text" placeholder="&#xF002;  Zoek een game.." name="search">
+<main class='searchLocation'>
+    <form action='#'>
+        <input id='searchField' type='text' placeholder='&#xF002;  Zoek een game..' name='search'>
     </form>
 
 
-    <section class="midSection">
-        <div class="radar-container">
-            <div class="img-container">
-                    <a href="droppedTags">
-                <img src="/static/images/games/rdr2.jpg" alt="Red Dead Redemption 2 cover image">
+    <section class='midSection'>
+        <div class='radar-container'>
+            <div class='img-container'>
+                    <a href='droppedTags'>
+                <img src='/static/images/games/rdr2.jpg' alt='Red Dead Redemption 2 cover image'>
                 </a>
             </div>
             <p>0,5 km</p>
@@ -28,6 +28,6 @@
         </div>
     </section>
 
-            <a class="dropTagBtn" href=/add>Drop jouw tag</a> 
+            <a class='dropTagBtn' href=/add>Drop jouw tag</a> 
 </main>
 <% include tail.ejs %>

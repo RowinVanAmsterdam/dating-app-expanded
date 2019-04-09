@@ -1,17 +1,17 @@
-const express = require("express");
-const session = require("express-session");
+const express = require('express');
+const session = require('express-session');
 const router = express.Router();
-const bodyParser = require("body-parser");
-const mongo = require("mongodb");
+const bodyParser = require('body-parser');
+const mongo = require('mongodb');
 
-require("dotenv").config();
+require('dotenv').config();
 
 let db = null;
 let url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {useNewUrlParser: true }, function (err, client) {
     if (err) throw err;
-    db = client.db("MatchTag");
+    db = client.db('MatchTag');
 });
 
 router
@@ -22,19 +22,19 @@ router
         saveUninitialized: false,
         secret: process.env.SESSION_SECRET
     }))
-    .get("/login", get)
-    .post("/login", checkUser);
+    .get('/login', get)
+    .post('/login', checkUser);
 
 function checkUser(req, res) {
     let email = req.body.email;
-    db.collection("members").findOne({
+    db.collection('members').findOne({
         email: email
     }, done);
 
     function done(err, user) {
         if (user && user.password === req.body.password){
             req.session.user = user;
-            res.redirect("searchLocation");
+            res.redirect('searchLocation');
         } else {
             res.json({err});
         }         
@@ -43,13 +43,13 @@ function checkUser(req, res) {
 
 function get(req, res, data) {
     if (req.session.user) {
-        res.render("login.ejs", {
+        res.render('login.ejs', {
             data: data,
             user: req.session.user
         }
         );
     } else {
-        res.render("login.ejs",  {
+        res.render('login.ejs',  {
             data: data,
             user: req.session.user
         }

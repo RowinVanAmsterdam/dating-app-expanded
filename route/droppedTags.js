@@ -1,11 +1,11 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const bodyParser = require("body-parser");
 const multer = require("multer");
 const mongo = require("mongodb");
 const methodOverride = require("method-override");
 
-require("dotenv").config();
+require('dotenv').config();
 
 let db = null;
 let url = process.env.MONGODB_URI;
@@ -14,15 +14,15 @@ mongo.MongoClient.connect(url, {
     useNewUrlParser: true
 }, function (err, client) {
     if (err) throw err;
-    db = client.db("MatchTag");
+    db = client.db('MatchTag');
 });
 
 const upload = multer({
-    dest: "static/upload/"
+    dest: 'static/upload/'
 });
 
 router
-    .use(express.static("static"))
+    .use(express.static('static'))
     .use(bodyParser.urlencoded({
         extended: true
     }))
@@ -35,9 +35,10 @@ router
     .delete("/:id", remove);
 
 
+
 function finduser(req, res, next) {
     let id = req.params.id;
-    db.collection("red_dead_redemption_2").findOne({
+    db.collection('red_dead_redemption_2').findOne({
         _id: mongo.ObjectID(id)
     }, done);
 
@@ -46,7 +47,7 @@ function finduser(req, res, next) {
             next(err);
 
         } else {
-            res.render("detail.ejs", {
+            res.render('detail.ejs', {
                 data: data,
                 user: req.session.user
             });
@@ -56,24 +57,24 @@ function finduser(req, res, next) {
 
 function get(req, res, next) {
     if (req.session.user) {
-        db.collection("red_dead_redemption_2").find().toArray(done);
+        db.collection('red_dead_redemption_2').find().toArray(done);
 
         function done(err, data) {
             if (err) {
                 next(err);
             } else {
-                res.render("droppedTags.ejs", {
+                res.render('droppedTags.ejs', {
                     data: data,
                     user: req.session.user
                 });
             }
         }} else {
-        res.status(404).render("credsrequired.ejs");
+        res.status(404).render('credsrequired.ejs');
     }
 }
 
 function add(req, res, next) {
-    db.collection("red_dead_redemption_2").insertOne({
+    db.collection('red_dead_redemption_2').insertOne({
         name: req.body.name,
         cover: req.file ? req.file.filename : null,
         age: req.body.age,
@@ -85,14 +86,14 @@ function add(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.redirect("/" + data.insertedId);
+            res.redirect('/' + data.insertedId);
         }
     }
 }
 
 function remove(req, res, next) {
     let id = req.params.id;
-    db.collection("red_dead_redemption_2").deleteOne({
+    db.collection('red_dead_redemption_2').deleteOne({
         _id: mongo.ObjectID(id)
     }, done);
 
@@ -101,7 +102,7 @@ function remove(req, res, next) {
             next(err);
         } else {
             res.json({
-                status: "ok"
+                status: 'ok'
             });
         }
     }
@@ -110,21 +111,21 @@ function remove(req, res, next) {
 function form(req, res, next) {
     if (req.session.user) {
         let user = req.session.user;
-        db.collection("members").findOne(user, done);
+        db.collection('members').findOne(user, done);
 
         function done(err, data) {
             if (err) {
                 next(err);
 
             } else {
-                res.render("add.ejs", {
+                res.render('add.ejs', {
                     data: data,
                     user: req.session.user
                 });
             }
         }
     } else {
-        res.status(401).render("credsrequired.ejs");
+        res.status(401).render('credsrequired.ejs');
     }
 }
 

@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bodyParser = require("body-parser");
-const multer = require("multer");
-const mongo = require("mongodb");
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const mongo = require('mongodb');
 
-require("dotenv").config();
+require('dotenv').config();
 
 let db = null;
 let url = process.env.MONGODB_URI;
@@ -13,27 +13,27 @@ mongo.MongoClient.connect(url, {
     useNewUrlParser: true
 }, function (err, client) {
     if (err) throw err;
-    db = client.db("MatchTag");
+    db = client.db('MatchTag');
 });
 
 var upload = multer({
-    dest: "static/upload/"
+    dest: 'static/upload/'
 });
 
 router
-    .use(express.static("static"))
+    .use(express.static('static'))
     .use(bodyParser.urlencoded({extended: true}))
     .use(bodyParser.json())
-    .get("/register", get)
-    .get("/register", add)
-    .post("/register", upload.single("cover"), add);
+    .get('/register', get)
+    .get('/register', add)
+    .post('/register', upload.single('cover'), add);
 
 function get(req, res) {
-    res.render("register.ejs");
+    res.render('register.ejs');
 }
 
 function add(req, res, next) {
-    db.collection("members").insertOne({
+    db.collection('members').insertOne({
         cover: req.file ? req.file.filename : null,
         email: req.body.email,
         password: req.body.password,
@@ -47,7 +47,7 @@ function add(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.redirect("/login");
+            res.redirect('/login');
         }
     }
 }

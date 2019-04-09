@@ -38,8 +38,19 @@ router
 
 function finduser(req, res, next) {
     let id = req.params.id;
+
+    // check of het gegeven ID wel een valide ObjectID is, 
+    // soms komt het voor dat er data gecachet is of aangeroepen
+    // moet worden zonder specifieke url. Dan moet er gecheckt 
+    // worden
+    if(!id.match(/^[a-fA-F0-9]{24}/)) {
+        return;
+    }
+
+    id = new mongo.ObjectID(id);
+    
     db.collection('red_dead_redemption_2').findOne({
-        _id: mongo.ObjectID(id)
+        _id: id
     }, done);
 
     function done(err, data) {

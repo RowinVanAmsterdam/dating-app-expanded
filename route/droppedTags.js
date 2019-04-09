@@ -44,7 +44,6 @@ function finduser(req, res, next) {
     }
 
     id = new mongo.ObjectID(id);
-
     
     db.collection('red_dead_redemption_2').findOne({
         _id: id

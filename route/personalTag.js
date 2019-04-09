@@ -34,7 +34,7 @@ function get(req, res, next) {
         let user = req.session.user;
 
         db.collection('red_dead_redemption_2').find(
-            {'name': user.n ame}, done);
+            {'name': user.name}, done);
     } else {
         res.status(401).render('credsrequired.ejs');
     }

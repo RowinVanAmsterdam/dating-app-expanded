@@ -3,9 +3,9 @@
 <header>
   <nav class='navBar'>
     <ul>
-      <li class=''><a href='login'></a></li>
-      <li class=''><a href='searchLocation'></a></li>
-      <li class=''><a href='personalTag'></a></li>
+      <li class=""><a href="../login"></a></li>
+      <li class=""><a href="../searchLocation"></a></li>
+      <li class=""><a href="../personalTag"></a></li>
     </ul>
   </nav>
 </header>
@@ -28,11 +28,13 @@
     </p>
   </section>
 
-  <section class='detailButtons'>
-    <a href='/droppedTags' class='backBtn'>Terug</a>
-
+  <section class="detailButtons"> 
+    <a href="/<%= collTitle %>" class="backBtn">Terug</a>
+<h1><%= collTitle %></h1>
     <% if (user.name === data.name) { %>
-    <button id=deleteButton data-id='<%= data._id %>' class=delete>Verwijder Tag</button>
+      <form action="/delete/<%= collTitle %>/<%= userId %>" method='POST'>
+      <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
+    </form>
     <% } else { %>
     <a href='#' class='delete'>Stuur bericht</a>
     

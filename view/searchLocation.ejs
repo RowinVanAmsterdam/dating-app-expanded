@@ -14,20 +14,15 @@
         <input id='searchField' type='text' placeholder='&#xF002;  Zoek een game..' name='search'>
     </form>
 
-
-    <section class='midSection'>
-        <div class='radar-container'>
-            <div class='img-container'>
-                    <a href='droppedTags'>
-                <img src='/static/images/games/rdr2.jpg' alt='Red Dead Redemption 2 cover image'>
-                </a>
-            </div>
-            <p>0,5 km</p>
-            <p>1,0 km</p>
-            <p>1,5 km</p>
-        </div>
-    </section>
-
-            <a class='dropTagBtn' href=/add>Drop jouw tag</a> 
+    <section class="gameList">
+            <ul>
+              <% for (var i = 0; i < data.length; i++) { %>
+              <li tabindex="0">
+                <a  href="/<%= data[i].name%>"><p>
+                    <%= data[i].name%></p></a>
+              </li>
+              <% } %>
+            </ul>
+          </section>
 </main>
 <% include tail.ejs %>

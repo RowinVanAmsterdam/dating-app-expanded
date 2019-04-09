@@ -169,10 +169,6 @@ textarea:focus {
   outline: none;
 }
 
-.searchLocation .img-container:hover {
-  opacity: .6;
-}
-
 .dropTagBtn:hover,
 .dropTagBtn:focus {
   background: rgba(255,255,255,.4);
@@ -186,15 +182,19 @@ textarea:focus {
 
 /* ------- droppedTags ------- */
 .droppedTagList ul li:hover,
-.droppedTagList ul li:focus {
+.droppedTagList ul li:focus,
+.gameList ul li:hover,
+.gameList ul li:focus {
   background: rgba(255,255,255,.4);
   transition: 0.3s;
   outline: none;
 }
 
-.droppedTagList ul li a:focus {
+.droppedTagList ul li a:focus,
+.gameList ul li a:focus {
   outline: none;
 }
+
 
 /* ------- Detail ------- */
 .backBtn:hover,
@@ -346,71 +346,44 @@ form a:last-child {
   border: 1px solid #ffffff;
 }
 
-.midSection {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+.gameList {
   width: 90%;
+  height: 90%;
+  overflow: auto;
 }
 
-.radar-container {
+.gameList h2 {
+  margin: 0;
+  font-size: 1em;
+}
+
+.gameList ul {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameList ul li {
+  width: 80%;
+  height: 150px;
+  margin-top: 1px;
+  margin-bottom: 10px;
+  background-image: url("./images/backgrounds/gamecontrollers.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gameList ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.radar-container:before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-
-.img-container {
-  overflow: hidden;
-  width: 10em;
-  height: 10em;
-  border-radius: 50%;
-  border: 5px solid #ffffff;
-  z-index: 1;
-}
-
-.img-container img {
-  width: auto;
-  height: 100%;
-}
-
-.radar-container p {
-  border: 1px solid #ffffff;
-  font-size: 0.8em;
-  padding-left: 8px;
-  width: 50%;
-  height: 50%;
-  border-radius: 50%;
-  position: absolute;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-}
-
-.radar-container p:nth-child(3) {
-  width: 75%;
-  height: 75%;
-  opacity: .7;
-}
-
-.radar-container p:nth-child(4) {
-  width: 100%;
-  height: 100%;
-  opacity: .5;
-}
-
-.searchLocation form:last-child {
-  text-align: center;
-  width: 100%;
+  font-weight: bold;
+  font-size: 1em;
 }
 
 /* #endregion */
@@ -427,13 +400,9 @@ form a:last-child {
   background-size: cover;
 }
 
-.droppedTags h1 {
-  margin-bottom: 0;
-}
-
 .droppedTagList {
   width: 90%;
-  height: 40%;
+  height: 60%;
   overflow: auto;
 }
 
@@ -626,6 +595,20 @@ form a:last-child {
   text-transform: uppercase;
   margin: 1em 0;
   cursor: pointer;
+}
+
+.img-container {
+  overflow: hidden;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  z-index: 1;
+}
+
+.img-container img {
+  width: auto;
+  height: 100%;
 }
 
 /* #endregion */

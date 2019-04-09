@@ -1,31 +1,51 @@
 <% include head.ejs %>
 <title>Match Tag</title>
 <header>
-  <nav class='navBar'>
+  <nav class="navBar">
     <ul>
-      <li class=''><a href='login'></a></li>
-      <li class=''><a href='searchLocation'></a></li>
-      <li class='active'><a href='personalTag'></a></li>
+      <li class=""><a href="login"></a></li>
+      <li class=""><a href="searchLocation"></a></li>
+      <li class="active"><a href="personalTag"></a></li>
     </ul>
   </nav>
 </header>
-<main class='personalTag'>
+<main class="personalTag">
   <h1>
-    <%= user.name + ', ' + user.age%>
+    <%= user.name + ", " + user.age%>
   </h1>
   <% if (user.cover) { %>
-  <div class='img-container'>
-    <img alt src='/upload/<%= user.cover %>''>
+  <div class="img-container">
+    <img alt src="/upload/<%= user.cover %>">
   </div>
   <% } %>
 
-  <section class='bio'>
+  <section class="bio">
   <h2>
     <%= user.pickupline %>
   </h2>
   <p>
     <%= user.description %>
   </p>
-</section>
+  </section>
+  <section class="droppedTagList">
+    <h2>Tags:</h2>
+    <ul>
+      <% for (var i = 0; i < data.length; i++) { %>
+      <li class="tagList">
+        <a  href='/<%= data[i]._id %>'>
+            <p><%= data[i].name + ', ' + data[i].age%></p>
+        </a>
+            <% if (user.name === data[i].name) { %>
+            <a class=deleteButton data-id='<%= data[i]._id %>'><img class="remove" src='../static/images/icons/clear-button.svg' /></a> 
+            <% } else { %>
+            <h1>Something went wrong</h1>
+            <% } %>
+      </li>
+      <% } %>
+    </ul>
+  </section>
+
+  
+
 </main>
 <% include tail.ejs %>

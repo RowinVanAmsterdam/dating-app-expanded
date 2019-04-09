@@ -19,7 +19,7 @@
   </div>
   <% } %>
 
-  <section class="bio">
+  <section class='bio'>
     <h2>
       <%= data.pickupline %>
     </h2>
@@ -28,13 +28,13 @@
     </p>
   </section>
 
-  <section class="detailButtons">
-    <a href="/droppedTags" class="backBtn">Terug</a>
+  <section class='detailButtons'>
+    <a href='/droppedTags' class='backBtn'>Terug</a>
 
     <% if (user.name === data.name) { %>
-    <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
+    <button id=deleteButton data-id='<%= data._id %>' class=delete>Verwijder Tag</button>
     <% } else { %>
-    <a href="#" class="delete">Stuur bericht</a>
+    <a href='#' class='delete'>Stuur bericht</a>
     
     <form action='/<%= data._id %>/like?_method=PUT' method='POST'>
       <label for='superlike'>

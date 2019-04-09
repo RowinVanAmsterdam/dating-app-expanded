@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require("body-parser");
-const multer = require("multer");
-const mongo = require("mongodb");
-const methodOverride = require("method-override");
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const mongo = require('mongodb');
+const methodOverride = require('method-override');
 
 require('dotenv').config();
 
@@ -27,12 +27,12 @@ router
         extended: true
     }))
     .use(methodOverride('_method'))
-    .get("/droppedTags", get)
-    .post("/droppedTags", upload.single("cover"), add)
-    .get("/add", form)
-    .get("/:id", finduser)
-    .put("/:id/like", superlikeProfile)
-    .delete("/:id", remove);
+    .get('/droppedTags', get)
+    .post('/droppedTags', upload.single('cover'), add)
+    .get('/add', form)
+    .get('/:id', finduser)
+    .put('/:id/like', superlikeProfile)
+    .delete('/:id', remove);
 
 
 
@@ -132,7 +132,7 @@ function form(req, res, next) {
 function superlikeProfile(req, res, next) {
     var id = req.params.id;
 
-    db.collection("red_dead_redemption_2").updateOne({
+    db.collection('red_dead_redemption_2').updateOne({
         _id: mongo.ObjectID(id)
     }, {
         $set: {
@@ -148,7 +148,7 @@ function superlikeProfile(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.redirect("/" + id);
+            res.redirect('/' + id);
         }
     }
 }

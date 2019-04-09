@@ -1,11 +1,11 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 router
-    .get("/", get);
+    .get('/', get);
 
 function get(req, res) {
-    res.render("index.ejs");
+    res.render('index.ejs');
 }
 
 module.exports = router;

@@ -26,6 +26,26 @@
   <p>
     <%= user.description %>
   </p>
-</section>
+  </section>
+  <section class="droppedTagList">
+    <h2>Tags:</h2>
+    <ul>
+      <% for (var i = 0; i < data.length; i++) { %>
+      <li class="tagList">
+        <a  href='/<%= data[i]._id %>'>
+            <p><%= data[i].name + ', ' + data[i].age%></p>
+        </a>
+            <% if (user.name === data[i].name) { %>
+            <a class=deleteButton data-id='<%= data[i]._id %>'><img class="remove" src='../static/images/icons/clear-button.svg' /></a> 
+            <% } else { %>
+            <h1>Something went wrong</h1>
+            <% } %>
+      </li>
+      <% } %>
+    </ul>
+  </section>
+
+  
+
 </main>
 <% include tail.ejs %>

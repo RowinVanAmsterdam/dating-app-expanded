@@ -19,7 +19,7 @@ express()
     .use(notFound)
     .set('view engine', 'ejs')
     .set('views', 'view')
-    .listen(3000);
+    .listen(process.env.PORT || 8000);
 
 
 function notFound(req, res) {

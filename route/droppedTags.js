@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const mongo = require('mongodb');
+const methodOverride = require('method-override');
 
 require('dotenv').config();
 
@@ -25,11 +26,14 @@ router
     .use(bodyParser.urlencoded({
         extended: true
     }))
+    .use(methodOverride('_method'))
     .get('/droppedTags', get)
     .post('/droppedTags', upload.single('cover'), add)
     .get('/add', form)
     .get('/:id', finduser)
+    .put('/:id/like', superlikeProfile)
     .delete('/:id', remove);
+
 
 
 function finduser(req, res, next) {
@@ -122,6 +126,30 @@ function form(req, res, next) {
         }
     } else {
         res.status(401).render('credsrequired.ejs');
+    }
+}
+
+function superlikeProfile(req, res, next) {
+    var id = req.params.id;
+
+    db.collection('red_dead_redemption_2').updateOne({
+        _id: mongo.ObjectID(id)
+    }, {
+        $set: {
+            likes: [
+                mongo.ObjectID(req.session.user._id), //gives the user.id of the superliker
+            ]
+        },
+    }, {
+        upsert: true
+    }, done);
+
+    function done(err) {
+        if (err) {
+            next(err);
+        } else {
+            res.redirect('/' + id);
+        }
     }
 }
 

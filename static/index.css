@@ -21,18 +21,18 @@ body {
 
 .navBar ul {
   width: 100%;
-  background: #8B1728;
+  background: #374048;
   display: flex;
   justify-content: center;
   padding: 0;
   margin: 0 auto;
-  height: 2em;
   box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
 .navBar ul li {
   width: 50%;
   text-align: center;
+  padding: 0.938em;
 }
 
 .navBar li a {
@@ -41,6 +41,7 @@ body {
   background-size: 2.5em;
   display: block;
   height: 100%;
+  padding: 15px;
   opacity: .6;
 }
 
@@ -60,7 +61,11 @@ body {
   background-image: url(/static/images/icons/tag1.png);
 }
 
- .navBar li.active:nth-of-type(1) a {
+.navBar li.active {
+  border-bottom: 0.188em solid #0EBEDD;
+}
+
+.navBar li.active:nth-of-type(1) a {
   background-image: url(/static/images/icons/account2.png);
   opacity: 1;
 } 
@@ -112,7 +117,7 @@ textarea {
 /* ------- Index ------- */
 .index a:not(:last-child):hover,
 .index a:not(:last-child):focus {
-  background-color: rgba(255,255,255,.4);
+  /* background-color: rgba(255,255,255,.4); */
   transition: 0.3s;
   outline: none;
 }
@@ -185,7 +190,7 @@ textarea:focus {
 .droppedTagList ul li:focus,
 .gameList ul li:hover,
 .gameList ul li:focus {
-  background: rgba(255,255,255,.4);
+  background: #4F5964;
   transition: 0.3s;
   outline: none;
 }
@@ -236,16 +241,24 @@ textarea:focus {
   max-height: auto;
 }
 
-.index a:not(:last-child)  {
+.index .btn.btn--primary {
+  background-image: linear-gradient(134deg, #0C8FA6 0%, #5FDFF6 61%, #68E8FF 100%);
+  font-size: 1em;
+  color: #FFFFFF;
+}
+
+.index .btn.btn--secundair {
+  font-size: .9em;
+}
+
+.index .btn  {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ffffff;
   font-weight: 100;
   text-decoration: none;
-  text-transform: uppercase;
 
-  border: 1px solid #ffffff;
   border-radius: 10em;
   margin-top: 1em;
   width: 80%;
@@ -269,17 +282,18 @@ form {
 }
 
 .index form input {
-  height: 3.5em;
   background: rgba(0, 0, 0, 0);
   border: 1px solid rgba(255, 255, 255, .6);
   color: #ffffff;
+  font-size: 1em;
+  padding: 0.625em;
   text-align: center;
 }
 
 form input[type=submit] {
   border: none;
-  background: linear-gradient(to bottom right, red, #ffffff);
-  text-transform: uppercase;
+  background-image: linear-gradient(134deg, #0C8FA6 0%, #5FDFF6 61%, #68E8FF 100%);
+  font-size: 1em;
 }
 
 form a:last-child {
@@ -297,9 +311,7 @@ form a:last-child {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('./images/backgrounds/redgradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #21262C;
 }
 
 .login a {
@@ -327,9 +339,7 @@ form a:last-child {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: url('./images/backgrounds/redgradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #21262C;
 }
 
 .searchLocation form:first-child {
@@ -341,15 +351,20 @@ form a:last-child {
   font-size: 1em;
   text-align: left;
   margin-bottom: 0;
-  padding: 10px;
+  padding: 0.938em;
   background: #ffffff;
   border: 1px solid #ffffff;
 }
 
 .gameList {
-  width: 90%;
+  width: 100%;
   height: 90%;
   overflow: auto;
+}
+
+.gameList img {
+  border-radius: 0.188em;
+  width: 20%;
 }
 
 .gameList h2 {
@@ -363,25 +378,24 @@ form a:last-child {
   flex-direction: column;
   align-items: center;
 }
+.gameList ul li:first-of-type {
+  margin-top: 0;
+}
 
 .gameList ul li {
-  width: 80%;
-  height: 150px;
-  margin-top: 1px;
-  margin-bottom: 10px;
-  background-image: url("./images/backgrounds/gamecontrollers.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: flex;
+  width: 100%;
+  padding: 0.938em;
+  border-bottom: 2px solid #21262C;
 }
 
 .gameList ul li a {
-  color: #ffffff;
+  color: #D2D9E0;
   text-decoration: none;
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.938em;
   font-weight: bold;
   font-size: 1em;
 }
@@ -395,9 +409,7 @@ form a:last-child {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: url('./images/backgrounds/redgradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #21262C;
 }
 
 .droppedTagList {
@@ -455,9 +467,7 @@ form a:last-child {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: url('./images/backgrounds/redgradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #21262C;
 }
 
 .register label {
@@ -517,9 +527,7 @@ form a:last-child {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: url('./images/backgrounds/redgradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #21262C;
 }
 
 .add label:first-child {
@@ -554,9 +562,7 @@ form a:last-child {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-image: url('./images/backgrounds/redgradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #21262C;
 }
 
 .detail h1 {
@@ -620,9 +626,7 @@ form a:last-child {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-image: url('./images/backgrounds/redgradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #21262C;
 }
 
 .remove {
@@ -647,9 +651,7 @@ form a:last-child {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-image: url('./images/backgrounds/redgradient.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #21262C;
 }
 
 .credsRequired h1 {

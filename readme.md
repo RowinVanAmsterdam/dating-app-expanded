@@ -47,6 +47,7 @@ but certain functionalities will not be available.
 
 ### Image(s)
 * https://unsplash.com/
+* https://pixabay.com/nl/
 
 ### Icon(s)
 * Font Awesome

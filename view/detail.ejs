@@ -38,7 +38,7 @@
     <% } else { %>
     <a href='#' class='delete'>Stuur bericht</a>
     
-    <form action='/<%= data._id %>/like?_method=PUT' method='POST'>
+    <form action='/<%= collTitle %>/<%= data._id %>/like?_method=PUT' method='POST'>
       <label for='superlike'>
         <input type='radio' id='superlike' name='like' value='1'>
         superlike

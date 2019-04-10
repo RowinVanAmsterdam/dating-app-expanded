@@ -37,15 +37,17 @@
     </form>
     <% } else { %>
     <a href='#' class='delete'>Stuur bericht</a>
-    
-    <form action='/<%= collTitle %>/<%= data._id %>/like?_method=PUT' method='POST'>
-      <label for='superlike'>
-        <input type='radio' id='superlike' name='like' value='1'>
-        superlike
-      </label>
-      <button>Like</button>
-    </form>
-    
+
+    <% if (user._id != data.likes) { %>
+      <form action='/<%= collTitle %>/<%= data._id %>/like?_method=PUT' method='POST'>
+        <button>Like</button>
+      </form>
+    <% } else {%>
+      <form action='/<%= collTitle %>/<%= data._id %>/unlike?_method=DELETE' method='POST'>
+        <button>Unlike</button>
+      </form>
+    <% } %>
+
     <% } %>
   </section>
 </main>

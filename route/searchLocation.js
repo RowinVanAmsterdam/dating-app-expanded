@@ -34,7 +34,7 @@ router
     .get('/:id/add', form)
     .get('/:id', finduser)
     .get('/:id/:userId', detailUser)
-    .put('/:id/like', superlikeProfile)
+    .put('/:id/:userId/like', superlikeProfile)
     .post('/delete/:id/:userId', remove);
     
 
@@ -151,11 +151,9 @@ function remove(req, res, next) {
 }
 
 function superlikeProfile(req, res, next) {
-    var id = req.params.id;
-    console.log(req.params.id);
-    console.log(req.params.userId);
-    db.collection('red_dead_redemption_2').updateOne({
-        _id: mongo.ObjectID(id)
+    var userId = req.params.userId;
+    db.collection(req.params.id).updateOne({
+        _id: mongo.ObjectID(userId)
     }, {
         $set: {
             likes: [
@@ -170,7 +168,7 @@ function superlikeProfile(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.redirect('/' + id);
+            res.redirect('/' + req.params.id + '/' + userId);
         }
     }
 }

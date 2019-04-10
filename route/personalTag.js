@@ -1,4 +1,3 @@
-/* eslint-disable no-inner-declarations */
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
@@ -45,7 +44,6 @@ function get(req, res, next) {
 
         } else {
             let tagData = await data.toArray();
-            console.log(tagData);
             res.render('personalTag.ejs', {
                 data: tagData,
                 user: req.session.user

@@ -1,10 +1,11 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const bodyParser = require("body-parser");
-const multer = require("multer");
-const mongo = require("mongodb");
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const mongo = require('mongodb');
+const methodOverride = require('method-override');
 
-require("dotenv").config();
+require('dotenv').config();
 
 let db = null;
 let url = process.env.MONGODB_URI;
@@ -13,26 +14,28 @@ mongo.MongoClient.connect(url, {
     useNewUrlParser: true
 }, function (err, client) {
     if (err) throw err;
-    db = client.db("MatchTag");
+    db = client.db('MatchTag');
 });
 
 const upload = multer({
-    dest: "static/upload/"
+    dest: 'static/upload/'
 });
 
 router
-    .use(express.static("static"))
+    .use(express.static('static'))
     .use(bodyParser.urlencoded({
         extended: true
     }))
 
-    .get("/searchLocation", get)
+    .use(methodOverride('_method'))
+    .get('/searchLocation', get)
     
-    .post("/:id", upload.single("cover"), add)
-    .get("/:id/add", form)
-    .get("/:id", finduser)
-    .get("/:id/:userId", detailUser)
-    .post("/delete/:id/:userId", remove);
+    .post('/:id', upload.single('cover'), add)
+    .get('/:id/add', form)
+    .get('/:id', finduser)
+    .get('/:id/:userId', detailUser)
+    .put('/:id/like', superlikeProfile)
+    .post('/delete/:id/:userId', remove);
     
 
 function get(req, res, next) {
@@ -42,7 +45,7 @@ function get(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.render("searchLocation.ejs", {
+            res.render('searchLocation.ejs', {
                 data: data,
                 user: req.session.user
             });
@@ -58,7 +61,7 @@ function finduser(req, res, next) {
             next(err);
 
         } else {
-            res.render("collPage.ejs", {
+            res.render('collPage.ejs', {
                 data: data,
                 collTitle: req.params.id,
                 user: req.session.user
@@ -80,7 +83,7 @@ function detailUser(req, res, next) {
             next(err);
 
         } else {
-            res.render("detail.ejs", {
+            res.render('detail.ejs', {
                 data: data,
                 collTitle: req.params.id,
                 userId: req.params.userId,
@@ -104,7 +107,7 @@ function add(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.redirect("/" + req.params.id + "/" + data.insertedId);
+            res.redirect('/' + req.params.id + '/' + data.insertedId);
         }
     }
 }
@@ -114,14 +117,14 @@ function form(req, res, next) {
     if (req.session.user) {
         
         let user = req.session.user;
-        db.collection("members").findOne(user, done);
+        db.collection('members').findOne(user, done);
 
         function done(err, data) {
             if (err) {
                 next(err);
 
             } else {
-                res.render("add.ejs", {
+                res.render('add.ejs', {
                     data: data,
                     collTitle: req.params.id,
                     user: req.session.user
@@ -129,7 +132,7 @@ function form(req, res, next) {
             }
         }
     } else {
-        res.status(401).render("credsrequired.ejs");
+        res.status(401).render('credsrequired.ejs');
     }
 }
 
@@ -142,7 +145,32 @@ function remove(req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.redirect("/" + req.params.id);
+            res.redirect('/' + req.params.id);
+        }
+    }
+}
+
+function superlikeProfile(req, res, next) {
+    var id = req.params.id;
+    console.log(req.params.id);
+    console.log(req.params.userId);
+    db.collection('red_dead_redemption_2').updateOne({
+        _id: mongo.ObjectID(id)
+    }, {
+        $set: {
+            likes: [
+                mongo.ObjectID(req.session.user._id), //gives the user.id of the superliker
+            ]
+        },
+    }, {
+        upsert: true
+    }, done);
+
+    function done(err) {
+        if (err) {
+            next(err);
+        } else {
+            res.redirect('/' + id);
         }
     }
 }

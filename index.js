@@ -11,7 +11,6 @@ express()
     .use(require('./route/personalTag'))
     .use(require('./route/logout'))
     .use(require('./route/searchLocation'))
-    .use(require('./route/droppedTags'))
 
 
     .use(express.static('static'))

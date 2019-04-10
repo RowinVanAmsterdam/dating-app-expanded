@@ -19,7 +19,7 @@
     <h2>Gedropte gamertags:</h2>
     <ul>
       <% for (var i = 0; i < data.length; i++) { %>
-      <li tabindex='0'></li>
+      <li tabindex='0'>
         <a  href='/<%= data[i]._id %>'><p>
             <%= data[i].name + ', ' + data[i].age%></p></a>
       </li>

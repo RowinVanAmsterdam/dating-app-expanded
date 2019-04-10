@@ -408,7 +408,7 @@ form a:last-child {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #21262C;
 }
 
@@ -449,9 +449,8 @@ form a:last-child {
   color: #ffffff;
   font-weight: 100;
   text-decoration: none;
-  text-transform: uppercase;
 
-  border: 1px solid #ffffff;
+  background-image: linear-gradient(134deg, #0C8FA6 0%, #5FDFF6 61%, #68E8FF 100%);
   border-radius: 10em;
   margin-bottom: 1em;
   width: 80%;
@@ -508,14 +507,20 @@ form a:last-child {
   width: 9em;
   height: 3em;
   color: #ffffff;
-  border: 1px solid #ffffff;
   border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
+}
+
+.bottomBtns a:hover {
+  background: none;
+}
+
+.bottomBtns button {
+  background-image: linear-gradient(134deg, #0C8FA6 0%, #5FDFF6 61%, #68E8FF 100%);
 }
 
 /* #endregion */
@@ -570,12 +575,22 @@ form a:last-child {
 }
 
 .bio {
-  text-align: center;
   width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .bio h2 {
   font-size: 1em;
+}
+
+.bio form {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .detailButtons {
@@ -601,6 +616,20 @@ form a:last-child {
   text-transform: uppercase;
   margin: 1em 0;
   cursor: pointer;
+}
+
+.like {
+  background-image: linear-gradient(134deg, #0C8FA6 0%, #5FDFF6 61%, #68E8FF 100%);
+  color: #fff;
+  border-radius: 1.875em;
+  padding: 0.625em 2.813em;
+}
+
+.liked {
+  background: #04687C;
+  color: #fff;
+  border-radius: 1.875em;
+  padding: 0.625em 2.813em;
 }
 
 .img-container {

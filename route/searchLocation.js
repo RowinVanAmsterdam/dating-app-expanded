@@ -39,7 +39,7 @@ router
     
 
 function get(req, res, next) {
-    db.listCollections().toArray(done);
+    db.listCollections({ name: { $ne: "members" } }).toArray(done);
     
     function done(err, data) {
         if (err) {

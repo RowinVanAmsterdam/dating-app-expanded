@@ -117,9 +117,14 @@ textarea {
 /* ------- Index ------- */
 .index a:not(:last-child):hover,
 .index a:not(:last-child):focus {
-  /* background-color: rgba(255,255,255,.4); */
+  background-color: rgba(255,255,255,.4);
   transition: 0.3s;
   outline: none;
+}
+
+.index a:first-of-type:hover,
+.index a:first-of-type:focus {
+  opacity: 0.6;
 }
 
 .index a:last-child:hover,
@@ -131,10 +136,17 @@ textarea {
 
 /* ------- logIn ------- */
 
-.index form input:hover,
-.index form input:focus {
+.index form label input:hover,
+.index form label input:focus {
   border: 1px solid rgba(255, 255, 255, 1);
   transition: 0.3s;
+  outline: none;
+  cursor: pointer;
+}
+
+.index form input[type='submit']:hover,
+.index form input[type='submit']:focus {
+  opacity: 0.6;
   outline: none;
   cursor: pointer;
 }
@@ -224,7 +236,16 @@ textarea:focus {
   outline: none;
 }
 
-/* ------- droppedTags ------- */
+.like:hover,
+.like:focus,
+.liked:hover,
+.liked:focus {
+  opacity: 0.6;
+  cursor: pointer;
+  outline: none;
+}
+
+/* ------- personalTag ------- */
 .droppedList ul li a img:hover,
 .droppedList ul li a img:focus {
   opacity: 0.6;
@@ -258,6 +279,7 @@ textarea:focus {
 
 .index .btn.btn--secundair {
   font-size: .9em;
+  border: 1px solid #ffffff;
 }
 
 .index .btn  {
@@ -315,7 +337,7 @@ form a:last-child {
 
 /* user logged in */
 .login {
-  height: calc(100vh - 2em);
+  height: calc(100vh - 3.5em);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -343,7 +365,7 @@ form a:last-child {
 
 /* #region searchLocation */
 .searchLocation {
-  height: calc(100vh - 2em);
+  height: calc(100vh - 3.5em);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -423,7 +445,7 @@ form a:last-child {
 
 /* #region droppedTags */
 .droppedTags {
-  height: calc(100vh - 2em);
+  height: calc(100vh - 3.5em);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -581,7 +603,7 @@ form a:last-child {
 
 /* #region Detail*/
 .detail {
-  height: calc(100vh - 2em);
+  height: calc(100vh - 3.5em);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -669,7 +691,7 @@ form a:last-child {
 
 /* #region PersonalTag  */
 .personalTag {
-  height: calc(100vh - 2em);
+  height: calc(100vh - 3.5em);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -698,7 +720,6 @@ form a:last-child {
   width: 90%;
   height: 30%;
   overflow: auto;
-  border: 1px solid red;
 }
 
 .droppedList h2 {
@@ -728,7 +749,7 @@ form a:last-child {
 
 /* #region credsRequired  */
 .credsRequired {
-  height: calc(100vh - 2em);
+  height: calc(100vh - 3.5em);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

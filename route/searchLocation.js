@@ -40,7 +40,7 @@ router
     
 
 function get(req, res, next) {
-    db.listCollections({ name: { $ne: "members" } }).toArray(done);
+    db.listCollections({ name: { $ne: 'members' } }).toArray(done);
     
     function done(err, data) {
         if (err) {
@@ -54,12 +54,12 @@ function get(req, res, next) {
     }
 }
 
-function finduser(req, res, next) {
+function finduser(req, res) {
     db.collection(req.params.id).find().toArray(done);
     function done(err, data) {
         
         if (err) {
-            next(err);
+            res.render('not-found.ejs');
 
         } else {
             res.render('collPage.ejs', {
@@ -69,7 +69,8 @@ function finduser(req, res, next) {
             });
         }
     }
-}
+} 
+
 
 function detailUser(req, res, next) {
     // console.log(req.params.id);

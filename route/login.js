@@ -36,7 +36,7 @@ function checkUser(req, res) {
             req.session.user = user;
             res.redirect('searchLocation');
         } else {
-            res.json({err});
+            res.redirect('login');
         }         
     }
 }

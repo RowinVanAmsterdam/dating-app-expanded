@@ -1,32 +1,31 @@
 <% include head.ejs %>
-<title>Match Tag</title>
 <header>
-  <nav class='navBar'>
-    <ul>
-      <li class=''><a href='login'></a></li>
-      <li class='active'><a href='searchLocation'></a></li>
-      <li class=''><a href='personalTag'></a></li>
-    </ul>
-  </nav>
+    <nav class='navBar'>
+        <ul>
+            <li class=''><a href='login'></a></li>
+            <li class='active'><a href='searchLocation'></a></li>
+            <li class=''><a href='personalTag'></a></li>
+        </ul>
+    </nav>
 </header>
 <main class='searchLocation'>
-  <form action='#'>
-    <input id='searchField' type='text' placeholder='&#xF002;  Zoek een game..' name='search'>
-  </form>
+    <form action='#'>
+        <input id='searchField' type='text' placeholder='&#xF002;  Zoek een game..' name='search'>
+    </form>
 
-  <section class='gameList'>
-    <ul>
-      <% for (var i = 0; i < data.length; i++) { %>
-      <li tabindex='0'>
-        <a href='/<%= data[i].name%>'>
-          <img src='https://upload.wikimedia.org/wikipedia/en/1/1c/Call_of_Duty_Black_Ops_4_official_box_art.jpg'
-            alt='Black Ops 4 box art'>
-          <p>
-            <%= data[i].name%></p>
-        </a>
-      </li>
-      <% } %>
-    </ul>
-  </section>
+    <section class='gameList'>
+        <ul>
+            <% for (var i = 0; i < data.length; i++) { %>
+            <li tabindex='0'>
+                <a href='/<%= data[i].name%>'>
+                    <img src='https://upload.wikimedia.org/wikipedia/en/1/1c/Call_of_Duty_Black_Ops_4_official_box_art.jpg'
+                        alt='Black Ops 4 box art'>
+                    <p>
+                        <%= data[i].name%></p>
+                </a>
+            </li>
+            <% } %>
+        </ul>
+    </section>
 </main>
 <% include tail.ejs %>

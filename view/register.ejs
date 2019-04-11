@@ -1,19 +1,17 @@
 <% include head.ejs %>
-<title>Match Tag - Register</title>
 <main class='register'>
-  <h1>Maak jouw Tag aan</h1>
-  <form action=/register method=post enctype=multipart/form-data> 
-    <label class='imgUploadBtn'>Upload foto<input name=cover type=file accept=image/*></label>
-    <label>E-mailadres<input type='email' name=email></label>
-    <label>Wachtwoord<input type='password' name=password></label>
-    <label>Naam<input name=name></label>
-    <label>Leeftijd<input type='number' name=age></label>
-    <label>Openingszin<textarea name=pickupline rows='1'></textarea></label>
-    <label>Schrijf iets over jezelf<textarea name=description rows='5'></textarea></label>
-    <section class='bottomBtns'>
-      <a href='/'>Annuleer</a>
-      <button name='submit' class='addBtn'>Maak Tag aan</button>
-  </section>
-  </form>
+    <h1>Maak jouw Tag aan</h1>
+    <form action=/register method=post enctype=multipart/form-data> <label class='imgUploadBtn'>Upload foto<input
+            name=cover type=file accept=image/*> </label> <label>E-mailadres<input type='email' name=email></label>
+        <label>Wachtwoord<input type='password' name=password></label>
+        <label>Naam<input name=name></label>
+        <label>Leeftijd<input type='number' name=age></label>
+        <label>Openingszin<textarea name=pickupline rows='1'></textarea></label>
+        <label>Schrijf iets over jezelf<textarea name=description rows='5'></textarea></label>
+        <section class='bottomBtns'>
+            <a href='/'>Annuleer</a>
+            <button name='submit' class='addBtn'>Maak Tag aan</button>
+        </section>
+    </form>
 </main>
 <% include tail.ejs %>

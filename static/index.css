@@ -313,7 +313,7 @@ textarea:focus {
 
 /* #region login */
 /* User not logged in */
-form {
+.index form {
   width: 80%;
   height: auto;
 }

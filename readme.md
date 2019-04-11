@@ -46,6 +46,9 @@ The web application uses MongoDB Atlas to store data. The saved data consists of
 Data can and will be used further in the app. The application can be used without registering in the database, 
 but certain functionalities will not be available. 
 
+### Schema
+![Database schema](https://66.media.tumblr.com/03966e2af69397ec97053b8c0d9919b0/tumblr_pptfyf13M81xh4pqfo1_1280.png)
+
 ## Source(s)
 * https://github.com/cmda-bt/be-course-18-19/tree/master/examples/express-server
 * https://github.com/cmda-bt/be-course-18-19/tree/master/examples/mongodb-server

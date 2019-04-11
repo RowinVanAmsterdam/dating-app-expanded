@@ -28,25 +28,24 @@
     </p>
 
     <% if (user._id != data.likes) { %>
-      <form action='/<%= collTitle %>/<%= data._id %>/like?_method=PUT' method='POST'>
-        <button class="like">Like</button>
-      </form>
-      <% } else {%>
-      <form action='/<%= collTitle %>/<%= data._id %>/unlike?_method=DELETE' method='POST'>
-        <button class="liked">Unlike</button>
-      </form>
+    <form action='/<%= collTitle %>/<%= data._id %>/like?_method=PUT' method='POST'>
+      <button class='like'>Like</button>
+    </form>
+    <% } else {%>
+    <form action='/<%= collTitle %>/<%= data._id %>/unlike?_method=DELETE' method='POST'>
+      <button class='liked'>Unlike</button>
+    </form>
     <% } %>
   </section>
 
-  <section class="detailButtons">
-    <a href="/<%= collTitle %>" class="backBtn">Terug</a>
-    <h1><%= collTitle %></h1>
+  <section class='detailButtons'>
+    <a href='/<%= collTitle %>' class='backBtn'>Terug</a>
     <% if (user.name === data.name) { %>
-    <form action="/delete/<%= collTitle %>/<%= userId %>" method='POST'>
-      <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
+    <form action='/delete/<%= collTitle %>/<%= userId %>' method='POST'>
+      <button id=deleteButton data-id='<%= data._id %>' class=delete>Verwijder Tag</button>
     </form>
     <% } else { %>
-      <a href='#' class='delete'>Stuur bericht</a>
+    <a href='#' class='delete'>Stuur bericht</a>
     <% } %>
   </section>
 </main>

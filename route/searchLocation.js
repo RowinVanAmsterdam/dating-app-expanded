@@ -26,22 +26,24 @@ router
     .use(bodyParser.urlencoded({
         extended: true
     }))
-
     .use(methodOverride('_method'))
-    .get('/searchLocation', get)
-    
+    .get('/searchLocation', renderPage)
     .post('/:id', upload.single('cover'), add)
-    .get('/:id/add', form)
+    .get('/:id/add', dropTag)
     .get('/:id', finduser)
     .get('/:id/:userId', detailUser)
     .put('/:id/:userId/like', superlikeProfile)
     .delete('/:id/:userId/unlike', unlikeProfile)
     .post('/delete/:id/:userId', remove);
-    
 
-function get(req, res, next) {
-    db.listCollections({ name: { $ne: 'members' } }).toArray(done);
-    
+
+function renderPage(req, res, next) {
+    db.listCollections({
+        name: {
+            $ne: 'members'
+        }
+    }).toArray(done);
+
     function done(err, data) {
         if (err) {
             next(err);
@@ -56,8 +58,9 @@ function get(req, res, next) {
 
 function finduser(req, res) {
     db.collection(req.params.id).find().toArray(done);
+
     function done(err, data) {
-        
+
         if (err) {
             res.render('not-found.ejs');
 
@@ -69,12 +72,9 @@ function finduser(req, res) {
             });
         }
     }
-} 
-
+}
 
 function detailUser(req, res, next) {
-    // console.log(req.params.id);
-    // console.log(req.params.userId);
     let id = req.params.userId;
     db.collection(req.params.id).findOne({
         _id: mongo.ObjectID(id)
@@ -96,7 +96,6 @@ function detailUser(req, res, next) {
 }
 
 function add(req, res, next) {
-    // console.log(req.params.id);
     db.collection(req.params.id).insertOne({
         name: req.body.name,
         cover: req.file ? req.file.filename : null,
@@ -114,10 +113,8 @@ function add(req, res, next) {
     }
 }
 
-function form(req, res, next) {
-    // console.log("function form" + req.params.id);
+function dropTag(req, res, next) {
     if (req.session.user) {
-        
         let user = req.session.user;
         db.collection('members').findOne(user, done);
 
@@ -156,10 +153,12 @@ function superlikeProfile(req, res, next) {
     var userId = req.params.userId;
     db.collection(req.params.id).updateOne({
         _id: mongo.ObjectID(userId),
-        'likes': {$ne: mongo.ObjectID(req.session.user._id)}
+        'likes': {
+            $ne: mongo.ObjectID(req.session.user._id)
+        }
     }, {
         $push: {
-            likes: mongo.ObjectID(req.session.user._id), //gives the user.id of the superliker
+            likes: mongo.ObjectID(req.session.user._id),
         },
     }, done);
 
@@ -178,7 +177,7 @@ function unlikeProfile(req, res, next) {
         _id: mongo.ObjectID(userId)
     }, {
         $pull: {
-            likes: mongo.ObjectID(req.session.user._id), //gives the user.id of the superliker
+            likes: mongo.ObjectID(req.session.user._id),
         },
     }, done);
 

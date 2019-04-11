@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 router
-    .get('/', get);
+    .get('/', renderPage);
 
-function get(req, res) {
+function renderPage(req, res) {
     res.render('index.ejs');
 }
 

@@ -22,17 +22,19 @@ var upload = multer({
 
 router
     .use(express.static('static'))
-    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.urlencoded({
+        extended: true
+    }))
     .use(bodyParser.json())
-    .get('/register', get)
-    .get('/register', add)
-    .post('/register', upload.single('cover'), add);
+    .get('/register', renderPage)
+    .get('/register', register)
+    .post('/register', upload.single('cover'), register);
 
-function get(req, res) {
+function renderPage(req, res) {
     res.render('register.ejs');
 }
 
-function add(req, res, next) {
+function register(req, res, next) {
     db.collection('members').insertOne({
         cover: req.file ? req.file.filename : null,
         email: req.body.email,

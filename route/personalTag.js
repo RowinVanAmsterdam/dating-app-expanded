@@ -1,4 +1,3 @@
-/* eslint-disable no-inner-declarations */
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
@@ -23,18 +22,21 @@ var upload = multer({
 
 router
     .use(express.static('static'))
-    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.urlencoded({
+        extended: true
+    }))
     .use(bodyParser.json())
-    .post('/register', upload.single('cover'), get)
-    .get('/personalTag', get)
+    .post('/register', upload.single('cover'), showList)
+    .get('/personalTag', showList)
     .delete('/:id', remove);
 
-function get(req, res, next) {
+function showList(req, res, next) {
     if (req.session.user) {
         let user = req.session.user;
 
-        db.collection('red_dead_redemption_2').find(
-            {'name': user.name}, done);
+        db.collection('Red Dead Redemption 2').find({
+            'name': user.name
+        }, done);
     } else {
         res.status(401).render('credsrequired.ejs');
     }
@@ -45,7 +47,6 @@ function get(req, res, next) {
 
         } else {
             let tagData = await data.toArray();
-            console.log(tagData);
             res.render('personalTag.ejs', {
                 data: tagData,
                 user: req.session.user
@@ -57,7 +58,7 @@ function get(req, res, next) {
 function remove(req, res, next) {
     let id = req.params.id;
 
-    db.collection('red_dead_redemption_2').deleteOne({
+    db.collection('Red Dead Redemption 2').deleteOne({
         _id: mongo.ObjectID(id)
     }, done);
 

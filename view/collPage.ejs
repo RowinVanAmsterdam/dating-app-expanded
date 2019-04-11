@@ -1,23 +1,23 @@
 <% include head.ejs %>
 <title>Match Tag</title>
 <header>
-  <nav class="navBar">
+  <nav class='navBar'>
     <ul>
-      <li class=""><a href="login"></a></li>
-      <li class=""><a href="searchLocation"></a></li>
-      <li class=""><a href="personalTag"></a></li>
+      <li class=''><a href='login'></a></li>
+      <li class=''><a href='searchLocation'></a></li>
+      <li class=''><a href='personalTag'></a></li>
     </ul>
   </nav>
 </header>
-<main class="droppedTags">
+<main class='droppedTags'>
     <h1><%= collTitle%></h1>
-        <section class="droppedTagList">
+        <section class='droppedTagList'>
                 <h2>Gedropte gamertags:</h2>
                 <ul>
                   <% for (var i = 0; i < data.length; i++) { %>
-                  <li tabindex="0">
-                    <a  href="/<%= collTitle%>/<%= data[i]._id %>"><p>
-                        <%= data[i].name + ", " + data[i].age%></p></a>
+                  <li tabindex='0'>
+                    <a  href='/<%= collTitle%>/<%= data[i]._id %>'><p>
+                        <%= data[i].name + ', ' + data[i].age%></p></a>
                   </li>
                   <% } %>
                 </ul>
@@ -30,9 +30,9 @@
                 <%  } %>
               <% } %>
               <% if (found) { %>
-                    <a class="dropTagBtn" href="/<%= collTitle%>/<%= data[i]._id %>">Verwijder jouw tag</a>
+                    <a class='dropTagBtn' href='/<%= collTitle%>/<%= data[i]._id %>'>Verwijder jouw tag</a>
                <% }else{ %>
-                    <a class="dropTagBtn" href="/<%= collTitle%>/add">
+                    <a class='dropTagBtn' href='/<%= collTitle%>/add'>
                 Drop jouw tag</a>
                <% } %>
 

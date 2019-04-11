@@ -26,7 +26,7 @@ body {
   justify-content: center;
   padding: 0;
   margin: 0 auto;
-  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .2);
 }
 
 .navBar ul li {
@@ -54,9 +54,11 @@ body {
 .navBar li:nth-of-type(1) a {
   background-image: url(/static/images/icons/account1.png);
 }
+
 .navBar li:nth-of-type(2) a {
   background-image: url(/static/images/icons/search1.png);
 }
+
 .navBar li:nth-of-type(3) a {
   background-image: url(/static/images/icons/tag1.png);
 }
@@ -68,11 +70,13 @@ body {
 .navBar li.active:nth-of-type(1) a {
   background-image: url(/static/images/icons/account2.png);
   opacity: 1;
-} 
- .navBar li.active:nth-of-type(2) a {
+}
+
+.navBar li.active:nth-of-type(2) a {
   background-image: url(/static/images/icons/search2.png);
   opacity: 1;
-} 
+}
+
 .navBar li.active:nth-of-type(3) a {
   background-image: url(/static/images/icons/tag2.png);
   opacity: 1;
@@ -117,7 +121,7 @@ textarea {
 /* ------- Index ------- */
 .index a:not(:last-child):hover,
 .index a:not(:last-child):focus {
-  background-color: rgba(255,255,255,.4);
+  background-color: rgba(255, 255, 255, .4);
   transition: 0.3s;
   outline: none;
 }
@@ -153,7 +157,7 @@ textarea {
 
 .login a:hover,
 .login a:focus {
-  background-color: rgba(255,255,255,.4);
+  background-color: rgba(255, 255, 255, .4);
   transition: 0.3s;
   outline: none;
 }
@@ -176,7 +180,7 @@ textarea:focus {
 .bottomBtns a:focus,
 .bottomBtns button:hover,
 .bottomBtns button:focus {
-  background-color: rgba(255,255,255,.4);
+  background-color: rgba(255, 255, 255, .4);
   transition: 0.3s;
   outline: none;
 }
@@ -188,7 +192,7 @@ textarea:focus {
 
 .dropTagBtn:hover,
 .dropTagBtn:focus {
-  background: rgba(255,255,255,.4);
+  background: rgba(255, 255, 255, .4);
   transition: 0.3s;
   outline: none;
 }
@@ -217,13 +221,14 @@ textarea:focus {
 
 /* ------- Detail ------- */
 .backBtn:hover,
-.backBtn:focus, 
+.backBtn:focus,
 .delete:hover,
 .delete:focus {
-  background: rgba(255,255,255,.4);
+  background: rgba(255, 255, 255, .4);
   transition: 0.3s;
   outline: none;
 }
+
 /* ------- Add ------- */
 .add label:not(:first-child) input:hover,
 .add label:not(:first-child) input:focus {
@@ -252,6 +257,7 @@ textarea:focus {
   cursor: pointer;
   outline: none;
 }
+
 /* #endregion */
 
 /* #region Index */
@@ -282,7 +288,7 @@ textarea:focus {
   border: 1px solid #ffffff;
 }
 
-.index .btn  {
+.index .btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -361,6 +367,7 @@ form a:last-child {
   width: 80%;
   height: 2.5em;
 }
+
 /* #endregion */
 
 /* #region searchLocation */
@@ -409,6 +416,7 @@ form a:last-child {
   flex-direction: column;
   align-items: center;
 }
+
 .gameList ul li:first-of-type {
   margin-top: 0;
 }
@@ -512,7 +520,7 @@ form a:last-child {
 
 .register label {
   margin-top: 0;
-} 
+}
 
 .register label:not(:first-child) input {
   height: 3.5em;
@@ -599,6 +607,7 @@ form a:last-child {
   display: flex;
   flex-direction: column;
 }
+
 /* #endregion */
 
 /* #region Detail*/
@@ -641,7 +650,7 @@ form a:last-child {
   align-items: center;
 }
 
-.backBtn, 
+.backBtn,
 .delete {
   background: rgba(0, 0, 0, 0);
   width: 9em;
@@ -761,4 +770,5 @@ form a:last-child {
   width: 80%;
   text-align: center;
 }
+
 /* #endregion */

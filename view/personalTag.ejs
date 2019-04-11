@@ -28,12 +28,12 @@
   </p>
   </section>
   <section class="droppedList">
-    <h2>Tags gedropt in:</h2>
+    <h2>Jouw Tag is gedropt in:</h2>
     <ul>
       <% for (var i = 0; i < data.length; i++) { %>
       <li class="tagList">
-        <a  href='/<%= data[i]._id %>'>
-            <p><%= data[i].name + ', ' + data[i].age%></p>
+        <a  href='/red_dead_redemption_2'>
+            <p>Red Dead Redemption 2</p>
         </a>
             <% if (user.name === data[i].name) { %>
             <a class=deleteButton data-id='<%= data[i]._id %>'><img class="remove" src='../static/images/icons/clear-button.svg' /></a> 

@@ -30,9 +30,6 @@ router
     .delete('/:id', remove);
 
 function get(req, res, next) {
-     console.log(req.params.id);
-    console.log(req.params.userId);
-    console.log(collection.name);
     if (req.session.user) {
         let user = req.session.user;
 

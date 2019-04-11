@@ -30,29 +30,63 @@ router
     .delete('/:id', remove);
 
 function get(req, res, next) {
-    if (req.session.user) {
+
+    if (req.session && req.session.user) {
         let user = req.session.user;
+        db.collection('red_dead_redemption_2').aggregate([
+            {$lookup: {from: 'Apex Legends',localField: 'name',foreignField: 'name', as: 'userData'}},
+            {$match: {'name': user.name}},
+            /*{
+                $replaceRoot: { newRoot: { $mergeObjects: [ {$arrayElemAt: ['$userData', 0]}, '$ROOT']}}
+            },
+            { $project: { userData: 0 } }*/
+        ], done);
 
-        db.collection('red_dead_redemption_2').find(
-            {'name': user.name}, done);
-    } else {
-        res.status(401).render('credsrequired.ejs');
-    }
+        async function done(err, data) {
+            if (err) {
+                next(err);
+    
+            } else {
+                let tagData = await data.toArray();
 
-    async function done(err, data) {
-        if (err) {
-            next(err);
+                tagData = [...tagData, ...tagData[0].userData];
 
-        } else {
-            let tagData = await data.toArray();
-            console.log(tagData);
-            res.render('personalTag.ejs', {
-                data: tagData,
-                user: req.session.user
-            });
+                res.render('personalTag.ejs', {
+                    data: tagData,
+                    user: req.session.user
+                });
+            }
         }
     }
+    else {
+        res.status(401).render('credsrequired.ejs');
+    }
 }
+
+// function get(req, res, next) {
+//     if (req.session.user) {
+//         let user = req.session.user;
+
+//         db.collection('red_dead_redemption_2').find(
+//             {'name': user.name}, done);
+//     } else {
+//         res.status(401).render('credsrequired.ejs');
+//     }
+
+//     async function done(err, data) {
+//         if (err) {
+//             next(err);
+
+//         } else {
+//             let tagData = await data.toArray();
+//             console.log(tagData);
+//             res.render('personalTag.ejs', {
+//                 data: tagData,
+//                 user: req.session.user
+//             });
+//         }
+//     }
+// }
 
 function remove(req, res, next) {
     let id = req.params.id;

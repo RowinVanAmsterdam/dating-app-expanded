@@ -36,6 +36,7 @@
             <p><%= data[i].name + ', ' + data[i].age%></p>
         </a>
             <% if (user.name === data[i].name) { %>
+            
             <a class=deleteButton data-id='<%= data[i]._id %>'><img class="remove" src='../static/images/icons/clear-button.svg' /></a> 
             <% } else { %>
             <h1>Something went wrong</h1>

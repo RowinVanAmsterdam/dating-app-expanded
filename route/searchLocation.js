@@ -35,11 +35,12 @@ router
     .get('/:id', finduser)
     .get('/:id/:userId', detailUser)
     .put('/:id/:userId/like', superlikeProfile)
+    .delete('/:id/:userId/unlike', unlikeProfile)
     .post('/delete/:id/:userId', remove);
     
 
 function get(req, res, next) {
-    db.listCollections().toArray(done);
+    db.listCollections({ name: { $ne: 'members' } }).toArray(done);
     
     function done(err, data) {
         if (err) {
@@ -53,12 +54,12 @@ function get(req, res, next) {
     }
 }
 
-function finduser(req, res, next) {
+function finduser(req, res) {
     db.collection(req.params.id).find().toArray(done);
     function done(err, data) {
         
         if (err) {
-            next(err);
+            res.render('not-found.ejs');
 
         } else {
             res.render('collPage.ejs', {
@@ -68,7 +69,8 @@ function finduser(req, res, next) {
             });
         }
     }
-}
+} 
+
 
 function detailUser(req, res, next) {
     // console.log(req.params.id);
@@ -153,15 +155,31 @@ function remove(req, res, next) {
 function superlikeProfile(req, res, next) {
     var userId = req.params.userId;
     db.collection(req.params.id).updateOne({
+        _id: mongo.ObjectID(userId),
+        'likes': {$ne: mongo.ObjectID(req.session.user._id)}
+    }, {
+        $push: {
+            likes: mongo.ObjectID(req.session.user._id), //gives the user.id of the superliker
+        },
+    }, done);
+
+    function done(err) {
+        if (err) {
+            next(err);
+        } else {
+            res.redirect('/' + req.params.id + '/' + userId);
+        }
+    }
+}
+
+function unlikeProfile(req, res, next) {
+    var userId = req.params.userId;
+    db.collection(req.params.id).updateOne({
         _id: mongo.ObjectID(userId)
     }, {
-        $set: {
-            likes: [
-                mongo.ObjectID(req.session.user._id), //gives the user.id of the superliker
-            ]
+        $pull: {
+            likes: mongo.ObjectID(req.session.user._id), //gives the user.id of the superliker
         },
-    }, {
-        upsert: true
     }, done);
 
     function done(err) {

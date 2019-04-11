@@ -1,14 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const mongo = require('mongodb');
-const methodOverride = require('method-override');
+/* eslint-disable no-inner-declarations */
+var express = require('express');
+var router = express.Router();
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var mongo = require('mongodb');
+var methodOverride = require('method-override');
 
 require('dotenv').config();
 
-let db = null;
-let url = process.env.MONGODB_URI;
+var db = null;
+var url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {
     useNewUrlParser: true
@@ -17,7 +18,7 @@ mongo.MongoClient.connect(url, {
     db = client.db('MatchTag');
 });
 
-const upload = multer({
+var upload = multer({
     dest: 'static/upload/'
 });
 
@@ -75,7 +76,7 @@ function finduser(req, res) {
 }
 
 function detailUser(req, res, next) {
-    let id = req.params.userId;
+    var id = req.params.userId;
     db.collection(req.params.id).findOne({
         _id: mongo.ObjectID(id)
     }, done);
@@ -115,7 +116,7 @@ function add(req, res, next) {
 
 function dropTag(req, res, next) {
     if (req.session.user) {
-        let user = req.session.user;
+        var user = req.session.user;
         db.collection('members').findOne(user, done);
 
         function done(err, data) {

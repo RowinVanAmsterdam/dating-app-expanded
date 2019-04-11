@@ -1,35 +1,33 @@
 <% include head.ejs %>
-<title>Match Tag</title>
 <% if (user) { %>
 <header>
-  <nav class='navBar'>
-    <ul>
-      <li class='active'><a href='login'></a></li>
-      <li class=''><a href='searchLocation'></a></li>
-      <li class=''><a href='personalTag'></a></li>
-    </ul>
-  </nav>
+    <nav class='navBar'>
+        <ul>
+            <li class='active'><a href='login'></a></li>
+            <li class=''><a href='searchLocation'></a></li>
+            <li class=''><a href='personalTag'></a></li>
+        </ul>
+    </nav>
 </header>
 <main class='login'>
-  <% if (user.cover) { %>
-  <div class='img-container'>
-    <img alt src='/upload/<%= user.cover %>'>
-  </div>
-  <% } %>
-  <h1>
-    <%= user.name %>
-  </h1>
-
-  <a href=/logout>Log out</a> </main> <% } else { %>
-    <main class='index'>
-      <img class='indexLogo' src='/static/images/logo/logowhite.png' alt='Match Tag logo'>
-      <form action='login' method='POST'>
-        <label><input type='email' name='email' placeholder='E-mailadres'></label>
-        <label><input type='password' name='password' placeholder='Wachtwoord'></label>
-        <input type='submit' name='login' value='Inloggen'>
-        <a href='/'>Annuleer</a>
-      </form>
-    </main>
+    <% if (user.cover) { %>
+    <div class='img-container'>
+        <img alt src='/upload/<%= user.cover %>'>
+    </div>
     <% } %>
+    <h1>
+        <%= user.name %>
+    </h1>
 
-    <% include tail.ejs %>
+    <a href=/logout>Log out</a> </main> <% } else { %> <main class='index'>
+        <img class='indexLogo' src='/static/images/logo/logowhite.png' alt='Match Tag logo'>
+        <form action='login' method='POST'>
+            <label><input type='email' name='email' placeholder='E-mailadres'></label>
+            <label><input type='password' name='password' placeholder='Wachtwoord'></label>
+            <input type='submit' name='login' value='Inloggen'>
+            <a href='/'>Annuleer</a>
+        </form>
+</main>
+<% } %>
+
+<% include tail.ejs %>

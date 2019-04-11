@@ -1,13 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const mongo = require('mongodb');
+var express = require('express');
+var router = express.Router();
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var mongo = require('mongodb');
 
 require('dotenv').config();
 
-let db = null;
-let url = process.env.MONGODB_URI;
+var db = null;
+var url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {
     useNewUrlParser: true

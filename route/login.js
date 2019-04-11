@@ -1,13 +1,13 @@
-const express = require('express');
-const session = require('express-session');
-const router = express.Router();
-const bodyParser = require('body-parser');
-const mongo = require('mongodb');
+var express = require('express');
+var session = require('express-session');
+var router = express.Router();
+var bodyParser = require('body-parser');
+var mongo = require('mongodb');
 
 require('dotenv').config();
 
-let db = null;
-let url = process.env.MONGODB_URI;
+var db = null;
+var url = process.env.MONGODB_URI;
 
 mongo.MongoClient.connect(url, {
     useNewUrlParser: true
@@ -30,7 +30,7 @@ router
     .post('/login', checkUser);
 
 function checkUser(req, res) {
-    let email = req.body.email;
+    var email = req.body.email;
     db.collection('members').findOne({
         email: email
     }, done);

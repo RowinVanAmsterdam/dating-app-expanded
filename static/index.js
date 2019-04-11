@@ -7,9 +7,9 @@ for (var i = 0; i < tagList.length; i++) {
 }
 
 function onremove(ev) {
-    let node = ev.target;
-    let id = node.dataset.id || node.parentElement.dataset.id;
-    let res = new XMLHttpRequest();
+    var node = ev.target;
+    var id = node.dataset.id || node.parentElement.dataset.id;
+    var res = new XMLHttpRequest();
 
     res.open('DELETE', '/' + id);
     res.onload = onload;

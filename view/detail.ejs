@@ -3,9 +3,9 @@
 <header>
   <nav class='navBar'>
     <ul>
-      <li class=""><a href="../login"></a></li>
-      <li class=""><a href="../searchLocation"></a></li>
-      <li class=""><a href="../personalTag"></a></li>
+      <li class=''><a href='/login'></a></li>
+      <li class=''><a href='/searchLocation'></a></li>
+      <li class=''><a href='/personalTag'></a></li>
     </ul>
   </nav>
 </header>
@@ -26,25 +26,26 @@
     <p>
       <%= data.description %>
     </p>
+
+    <% if (user._id != data.likes) { %>
+      <form action='/<%= collTitle %>/<%= data._id %>/like?_method=PUT' method='POST'>
+        <button class="like">Like</button>
+      </form>
+      <% } else {%>
+      <form action='/<%= collTitle %>/<%= data._id %>/unlike?_method=DELETE' method='POST'>
+        <button class="liked">Unlike</button>
+      </form>
+    <% } %>
   </section>
 
-  <section class="detailButtons"> 
+  <section class="detailButtons">
     <a href="/<%= collTitle %>" class="backBtn">Terug</a>
     <% if (user.name === data.name) { %>
-      <form action="/delete/<%= collTitle %>/<%= userId %>" method='POST'>
+    <form action="/delete/<%= collTitle %>/<%= userId %>" method='POST'>
       <button id=deleteButton data-id="<%= data._id %>" class=delete>Verwijder Tag</button>
     </form>
     <% } else { %>
-    <a href='#' class='delete'>Stuur bericht</a>
-    
-    <form action='/<%= collTitle %>/<%= data._id %>/like?_method=PUT' method='POST'>
-      <label for='superlike'>
-        <input type='radio' id='superlike' name='like' value='1'>
-        superlike
-      </label>
-      <button>Like</button>
-    </form>
-    
+      <a href='#' class='delete'>Stuur bericht</a>
     <% } %>
   </section>
 </main>
